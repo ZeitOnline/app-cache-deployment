@@ -35,6 +35,7 @@ class Varnishtest(Component):
             excludables = prepone + exclude + postpone
             return prepone + list(BACKENDS.difference(excludables)) + postpone
 
+        self += Directory("tests")
         defdir = self.expand('{{component.defdir}}')
         loader = loader = jinja2.FileSystemLoader(defdir)
         env = jinja2.Environment(loader=loader, line_statement_prefix='@')
@@ -47,4 +48,4 @@ class Varnishtest(Component):
                 batou.output.annotate(preprocess)
                 tpl = env.get_template('preprocess.vtc')
                 tpl = tpl.render(vtc=path)
-                self += File(vtc, content=tpl)
+                self += File(path, content=tpl)
