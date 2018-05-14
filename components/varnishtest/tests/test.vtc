@@ -1,0 +1,24 @@
+varnishtest "Content from spektrum feed is delivered and cached"
+
+server s1 {
+    rxreq
+    expect req.url == "/index"
+    # Varnish does not gzip very short bodies, so we fake a longer one
+    txresp -hdr "Content-Type: text/html" -bodylen 43
+} -start
+
+@ call varnish(['spektrum'])
+    include "/etc/varnish/vcl_includes/main.vcl";
+@ endcall
+
+client c1 {
+    txreq -url "/index" -hdr "Host: www.zeit.de" -hdr "Accept-Encoding: gzip"
+    rxresp
+    expect resp.http.Content-Encoding == "gzip"
+} -run
+
+client c2 {
+    txreq -url "/static/latest/site.js" -hdr "Host: www.zeit.de" -hdr "Accept-Encoding: gzip"
+    rxresp
+    expect resp.http.Content-Encoding == "gzip"
+} -run
