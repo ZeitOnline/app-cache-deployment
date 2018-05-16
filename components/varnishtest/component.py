@@ -61,5 +61,4 @@ class Varnishtest(Component):
         self.assert_no_subcomponent_changes()
 
     def update(self):
-        pass
-        #self.cmd("docker build -t varnish_test_app_cache .")
+        self.cmd("docker run -it varnish_test_app_cache")
