@@ -1,7 +1,7 @@
 vcl 4.0;
 
-include "vcl/backends.vcl";
-include "vcl/init.vcl";
-include "vcl/recv.vcl";
-include "vcl/backend_response.vcl";
-include "vcl/deliver.vcl";
+include "/etc/varnish/vcl_includes/backends.vcl";
+include "/etc/varnish/vcl_includes/init.vcl";
+include "/etc/varnish/vcl_includes/recv.vcl";
+include "/etc/varnish/vcl_includes/backend_response.vcl";
+include "/etc/varnish/vcl_includes/deliver.vcl";
