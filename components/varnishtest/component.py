@@ -19,8 +19,6 @@ BACKENDS = {
 
 class Docker(Component):
     def configure(self):
-        vcldir = self.require_one('varnish_dir')
-        self += SyncDirectory('config', source=vcldir)
         self += File("Dockerfile")
 
     def verify(self):
@@ -32,10 +30,12 @@ class Docker(Component):
 
 class Varnishtest(Component):
     def configure(self):
+        self.vcldir = self.require_one('varnish_dir')
         self += Docker()
         self.render_varnishtest_templates()
         self += File('conftest.py')
         self += File("test_varnish_config.py")
+        self += File("Makefile", is_template=True)
 
     def render_varnishtest_templates(self):
         def get_backends(prepone=[], exclude=[], postpone=[]):
@@ -56,9 +56,3 @@ class Varnishtest(Component):
                 tpl = env.get_template('preprocess.vtc')
                 tpl = tpl.render(vtc=path)
                 self += File(path, content=tpl)
-
-    def verify(self):
-        self.assert_no_subcomponent_changes()
-
-    def update(self):
-        self.cmd("docker run -it varnish_test_app_cache")
