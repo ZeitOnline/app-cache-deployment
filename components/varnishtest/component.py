@@ -6,14 +6,7 @@ from batou.lib.file import SyncDirectory, Directory, File
 
 
 BACKENDS = {
-    'academics',
     'agatho',
-    'brandeins',
-    'default',
-    'newsolr',
-    'post',
-    'spektrum',
-    'zett'
 }
 
 
