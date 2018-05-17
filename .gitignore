@@ -103,5 +103,4 @@ ENV/
 # batou
 .batou-lock
 .batou/
-batou
 work/
