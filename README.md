@@ -10,7 +10,7 @@ On Debian (or derivates) the user needs to be added to the docker group in order
 
 ## Development
 
-Edit VCL in `components/varnish` and the tests in `components/varnishtest/tests`. You might want to use fswatch to run `bin/test` whenever you edit a component file: `fswatch ./components | bin/test`. (Don't watch the whole app-cache directory, since the work directory might change, which leads to an infinite loop. Took me a couple minutes to figure that one out.)
+Edit VCL in `components/varnish` and the tests in `components/varnishtest/tests`. You might want to use fswatch to run `bin/test` whenever you edit a component file: `fswatch -o ./components | xargs -n1 ./bin/test`. Don't  watch the whole app-cache directory, since the work directory might change, which leads to an infinite loop. Took me a couple minutes to figure that one out.)
 
 ## ToDo: Cookbooks
 
