@@ -4,7 +4,8 @@ varnishtest "Content from spektrum feed is delivered and cached"
 server s1 {
     rxreq
     expect req.url == "/agatho/thread/abc"
-    txresp -hdr "X-Backend: agatho" -bodylen 43
+	expect req.http.host == "community01.dev.zeit.de"
+    txresp -hdr "X-Backend: agatho"
 } -start
 
 @ call varnish(['agatho'])

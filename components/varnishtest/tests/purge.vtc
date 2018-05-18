@@ -1,0 +1,43 @@
+varnishtest "Content from spektrum feed is delivered and cached"
+
+
+server s1 {
+    rxreq
+    expect req.url == "/agatho/thread/abc"
+    expect req.http.host == "community01.dev.zeit.de"
+    txresp -hdr "X-Backend: agatho"
+    rxreq
+    expect req.url == "/agatho/thread/abc"
+    expect req.http.host == "community01.dev.zeit.de"
+    txresp -hdr "X-Backend: agatho"
+} -start
+
+@ call varnish(['agatho'])
+    include "/etc/varnish/vcl_includes/main.vcl";
+@ endcall
+
+# Get thread from backend
+client c1 {
+    txreq -url "/agatho/thread/abc" -hdr "Host: app-cache.zeit.de"
+    rxresp
+    expect resp.http.X-Backend == "agatho"
+} -run
+
+client c1 -run
+varnish v1 -expect cache_miss == 1
+varnish v1 -expect cache_hit == 1
+
+# Purge thread
+client c2 {
+    txreq -req "PURGE" -url "/agatho/thread/abc" -hdr "Host: app-cache.zeit.de"
+    rxresp
+    expect resp.http.x-reason == "Ban for agatho added"
+} -run
+
+varnish v1 -expect cache_miss == 1
+varnish v1 -expect cache_hit == 1
+
+# Rerun first request and expect backend fetch
+client c1 -run
+varnish v1 -expect cache_miss == 2
+varnish v1 -expect cache_hit == 1
