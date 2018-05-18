@@ -8,12 +8,11 @@ sub vcl_synth {
     <title>"} + resp.status + " " + resp.reason + {"</title>
   </head>
   <body>
-    <h1>Error "} + resp.status + " " + resp.reason + {"</h1>
+    <h1>"} + resp.status + ": " + resp.reason + {"</h1>
     <p>"} + resp.reason + {"</p>
     <h3>Guru Meditation:</h3>
     <p>XID: "} + req.xid + {"</p>
     <hr>
-    <p>Varnish cache server</p>
   </body>
 </html>
 "} );
