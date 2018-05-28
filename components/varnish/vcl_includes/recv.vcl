@@ -56,12 +56,43 @@ sub vcl_recv {
         set req.backend_hint = liveblog;
     }
 
+    # -- homepage feeds --
+
+    if (req.url == "/academics-hp-feed") {
+        set req.backend_hint = academics;
+        set req.http.host = "jobs.zeit.de";
+        set req.url = "/cached-rss-feeds/adpanel_333644.html";
+    }
+
+    if (req.url == "/brandeins-hp-feed") {
+        set req.backend_hint = brandeins;
+        set req.http.host = "www.brandeins.de";
+        set req.url = "/zeit-feed.rss";
+    }
+
+    if (req.url == "/spektrum-hp-feed") {
+        set req.backend_hint = spektrum;
+        set req.http.host = "www.spektrum.de";
+        set req.url = "/alias/rss/zeit-kooperationsfeed-mit-kategorien/1342995";
+    }
+
+    if (req.url == "/zett-hp-feed") {
+        set req.backend_hint = zett;
+        set req.http.host = "ze.tt";
+        set req.url = "/feed-zon";
+    }
+
+
     ### --- Useful patterns --- ###
 
     # Remove cookies, where not needed.
     if (req.backend_hint == liveblog ||
+            req.backend_hint == academics ||
+            req.backend_hint == brandeins ||
             req.backend_hint == liveblog3api ||
-            req.backend_hint == solr) {
+            req.backend_hint == solr ||
+            req.backend_hint == spektrum ||
+            req.backend_hint == zett) {
         unset req.http.Cookie;
     }
 }

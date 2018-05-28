@@ -6,10 +6,14 @@ from batou.lib.file import SyncDirectory, Directory, File
 
 
 BACKENDS = {
+    'academics',
     'agatho',
-    'liveblog3api',
+    'brandeins',
     'liveblog',
-    'solr'
+    'liveblog3api',
+    'solr',
+    'spektrum',
+    'zett'
 }
 
 
