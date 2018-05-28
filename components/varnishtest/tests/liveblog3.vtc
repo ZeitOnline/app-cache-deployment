@@ -1,4 +1,4 @@
-varnishtest "Content for liveblog is delivered and cached"
+varnishtest "Content for liveblog3 is delivered and cached"
 
 
 server s1 {
