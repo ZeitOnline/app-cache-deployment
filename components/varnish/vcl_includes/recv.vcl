@@ -6,11 +6,16 @@ acl zeit {
 }
 
 sub vcl_recv {
-    ### --- Purging --- ###
+
+    ### --- Access restriction --- ###
+	# Only internal services will ever be allowed to use this varnish
 
     if (!client.ip ~ zeit) {
         return(synth(405, "Not allowed."));
     }
+
+
+    ### --- Purging --- ###
 
     if (req.method == "PURGE" && req.url ~ "^/agatho/thread") {
         ban("obj.http.x-req-url ~ ^" + req.url);
