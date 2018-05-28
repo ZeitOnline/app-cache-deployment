@@ -1,0 +1,29 @@
+varnishtest "Content for liveblog is delivered and cached"
+
+
+server s1 {
+    rxreq
+    expect req.url == "/resources/LiveDesk/fuselfoo"
+	expect req.http.host == "zeit.superdesk.pro"
+    expect req.http.Cookie == <undef>
+    txresp -hdr "X-Backend: liveblog"
+} -start
+
+@ call varnish(['liveblog3api'])
+    include "/etc/varnish/vcl_includes/main.vcl";
+@ endcall
+
+client c1 {
+    txreq -url "/liveblog-status/fuselfoo" -hdr "Host: app-cache.zeit.de" \
+        -hdr "Cookie: foo"
+    rxresp
+    expect resp.http.X-Backend == "liveblog"
+} -run
+
+varnish v1 -expect cache_miss == 1
+varnish v1 -expect cache_hit == 0
+
+client c1 -run
+
+varnish v1 -expect cache_miss == 1
+varnish v1 -expect cache_hit == 1
