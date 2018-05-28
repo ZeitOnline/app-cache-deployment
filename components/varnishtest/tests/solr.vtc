@@ -1,21 +1,20 @@
-varnishtest "Content from spektrum feed is delivered and cached"
+varnishtest "Content from solr is delivered and cached"
 
 
 server s1 {
     rxreq
-    expect req.url == "/api/blogs/fuselfoo"
-	expect req.http.host == "zeit-api.liveblog.pro"
+    expect req.url == "/solr/website/select/fuselfoo"
     expect req.http.Cookie == <undef>
-    txresp -hdr "X-Backend: liveblogapi"
+    txresp -hdr "X-Backend: solr"
 } -start
 
-@ call varnish(['liveblog3api'])
+@ call varnish(['solr'])
     include "/etc/varnish/vcl_includes/main.vcl";
 @ endcall
 
 client c1 {
-    txreq -url "/liveblog-api-v3/fuselfoo" -hdr "Host: app-cache.zeit.de" \
-        -hdr "Cookie: foo"
+    txreq -url "/website-solr/select/fuselfoo" \
+        -hdr "Host: app-cache.zeit.de" -hdr "Cookie: foo"
     rxresp
-    expect resp.http.X-Backend == "liveblogapi"
+    expect resp.http.X-Backend == "solr"
 } -run

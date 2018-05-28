@@ -9,7 +9,7 @@ server s1 {
     txresp -hdr "X-Backend: liveblog"
 } -start
 
-@ call varnish(['liveblog3api'])
+@ call varnish(['liveblog'])
     include "/etc/varnish/vcl_includes/main.vcl";
 @ endcall
 

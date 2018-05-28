@@ -56,7 +56,12 @@ sub vcl_recv {
         set req.backend_hint = liveblog;
     }
 
-    if (req.backend_hint == liveblog || req.backend_hint == liveblog3api) {
+    ### --- Useful patterns --- ###
+
+    # Remove cookies, where not needed.
+    if (req.backend_hint == liveblog ||
+            req.backend_hint == liveblog3api ||
+            req.backend_hint == solr) {
         unset req.http.Cookie;
     }
 }
