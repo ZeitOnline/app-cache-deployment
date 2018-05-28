@@ -7,6 +7,8 @@ from batou.lib.file import SyncDirectory, Directory, File
 
 BACKENDS = {
     'agatho',
+    'liveblog3api',
+    'liveblog'
 }
 
 
