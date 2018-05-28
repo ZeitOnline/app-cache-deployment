@@ -1,4 +1,4 @@
-varnishtest "Content from spektrum feed is delivered and cached"
+varnishtest "Content for agatho can be purged"
 
 
 server s1 {

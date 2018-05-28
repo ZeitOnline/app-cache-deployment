@@ -1,4 +1,4 @@
-varnishtest "Content from spektrum feed is delivered and cached"
+varnishtest "Content from agatho is delivered and cached"
 
 
 server s1 {
@@ -17,3 +17,11 @@ client c1 {
     rxresp
     expect resp.http.X-Backend == "agatho"
 } -run
+
+varnish v1 -expect cache_miss == 1
+varnish v1 -expect cache_hit == 0
+
+client c1 -run
+
+varnish v1 -expect cache_miss == 1
+varnish v1 -expect cache_hit == 1
