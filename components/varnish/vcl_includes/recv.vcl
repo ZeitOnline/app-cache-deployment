@@ -25,6 +25,12 @@ sub vcl_recv {
         set req.http.host = "community01{{component.env}}.zeit.de";
     }
 
+    # -- search --
+    if (req.url ~ "^/website-solr/select") {
+        set req.url = regsub(req.url, "^/website-solr", "/solr/website");
+        set req.backend_hint = solr;
+    }
+
     # -- liveblog --
 
     # liveblog backends are needed, when the app-server itself does some

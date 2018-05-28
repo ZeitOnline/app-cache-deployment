@@ -8,11 +8,13 @@ from batou.lib.file import SyncDirectory, Directory, File
 BACKENDS = {
     'agatho',
     'liveblog3api',
-    'liveblog'
+    'liveblog',
+    'solr'
 }
 
 
 class Docker(Component):
+
     def configure(self):
         self += File("Dockerfile")
 
