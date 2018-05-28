@@ -1,5 +1,5 @@
 from batou.component import Component, Attribute
-from batou.lib.file import SyncDirectory, File
+from batou.lib.file import Directory, File
 
 class Varnish(Component):
 
@@ -8,6 +8,7 @@ class Varnish(Component):
     def configure(self):
         self += File(
             "default.vcl", source="default.vcl.tpl", is_template="true")
+        self += Directory('vcl_includes')
         self += File(
             "vcl_includes/backend_response.vcl",
             source="vcl_includes/backend_response.vcl",
