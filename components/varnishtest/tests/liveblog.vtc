@@ -1,4 +1,4 @@
-varnishtest "Content from spektrum feed is delivered and cached"
+varnishtest "Content for liveblog is delivered and cached"
 
 
 server s1 {
@@ -19,3 +19,11 @@ client c1 {
     rxresp
     expect resp.http.X-Backend == "liveblogapi"
 } -run
+
+varnish v1 -expect cache_miss == 1
+varnish v1 -expect cache_hit == 0
+
+client c1 -run
+
+varnish v1 -expect cache_miss == 1
+varnish v1 -expect cache_hit == 1
