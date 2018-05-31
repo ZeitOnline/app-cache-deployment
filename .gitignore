@@ -104,3 +104,6 @@ ENV/
 .batou-lock
 .batou/
 work/
+
+# macOS
+.DS_Store
