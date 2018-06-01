@@ -1,5 +1,5 @@
 {
-  "revision_id": "aaaa31222cfa371af63677d234a886c04fabb78059d704159522606d6295b1db",
+  "revision_id": "bf51c6df9aa3df92ca0d46417b6fe2fd46c36fc9bfa8f7a8cf98ce65389d4054",
   "name": "app-cache",
   "run_list": [
     "recipe[app-cache::default]",
@@ -8,25 +8,99 @@
     "recipe[zeit-corosync::default]",
     "recipe[app-cache::haproxy]"
   ],
-  "included_policy_locks": [
-
-  ],
   "cookbook_locks": {
+    "zeit-online": {
+      "version": "0.5.5",
+      "identifier": "d64b6c77395b169977a9d201194739ef6e322cac",
+      "dotted_decimal_identifier": "60318574244879126.43197242693196103.63700508748972",
+      "cache_key": "zeit-online-27b3060",
+      "origin": "git@styx2.zeit.de:/home/git/chef.git",
+      "source_options": {
+        "git": "git@styx2.zeit.de:/home/git/chef.git",
+        "revision": "27b3060",
+        "branch": "chefServer",
+        "rel": "cookbooks/zeit-online"
+      }
+    },
+    "zeit-baseserver": {
+      "version": "0.1.2",
+      "identifier": "da7b1c04a354802f48335414330ca5dfe8caccb6",
+      "dotted_decimal_identifier": "61496905190036608.13308709196542732.182381101894838",
+      "cache_key": "zeit-baseserver-27b3060",
+      "origin": "git@styx2.zeit.de:/home/git/chef.git",
+      "source_options": {
+        "git": "git@styx2.zeit.de:/home/git/chef.git",
+        "revision": "27b3060",
+        "branch": "chefServer",
+        "rel": "cookbooks/zeit-baseserver"
+      }
+    },
+    "zeit-patch": {
+      "version": "0.0.4",
+      "identifier": "3abf8945726ab96fcaa53fc6e6806133ba47114f",
+      "dotted_decimal_identifier": "16536144945769145.31466533503297152.106874796446031",
+      "cache_key": "zeit-patch-27b3060",
+      "origin": "git@styx2.zeit.de:/home/git/chef.git",
+      "source_options": {
+        "git": "git@styx2.zeit.de:/home/git/chef.git",
+        "revision": "27b3060",
+        "branch": "chefServer",
+        "rel": "cookbooks/zeit-patch"
+      }
+    },
+    "zeit-zabbix": {
+      "version": "1.1.1",
+      "identifier": "b5ac25e5e8571c387a98416cab0e31a2e216ce51",
+      "dotted_decimal_identifier": "51136249555605276.15897393047055118.54575647608401",
+      "cache_key": "zeit-zabbix-27b3060",
+      "origin": "git@styx2.zeit.de:/home/git/chef.git",
+      "source_options": {
+        "git": "git@styx2.zeit.de:/home/git/chef.git",
+        "revision": "27b3060",
+        "branch": "chefServer",
+        "rel": "cookbooks/zeit-zabbix"
+      }
+    },
+    "zeit-environments": {
+      "version": "2.0.0",
+      "identifier": "ea22fb6915936dd3c4cfc486cafda3690a7f10e8",
+      "dotted_decimal_identifier": "65903607745450861.59607616720390909.179671542993128",
+      "cache_key": "zeit-environments-27b3060",
+      "origin": "git@styx2.zeit.de:/home/git/chef.git",
+      "source_options": {
+        "git": "git@styx2.zeit.de:/home/git/chef.git",
+        "revision": "27b3060",
+        "branch": "chefServer",
+        "rel": "cookbooks/zeit-environments"
+      }
+    },
+    "zeit-corosync": {
+      "version": "0.1.4",
+      "identifier": "b6562b3987f0a08742661e608bb0e47246141d56",
+      "dotted_decimal_identifier": "51323189410132128.38072128219679664.251179453128022",
+      "cache_key": "zeit-corosync-27b3060",
+      "origin": "git@styx2.zeit.de:/home/git/chef.git",
+      "source_options": {
+        "git": "git@styx2.zeit.de:/home/git/chef.git",
+        "revision": "27b3060",
+        "branch": "chefServer",
+        "rel": "cookbooks/zeit-corosync"
+      }
+    },
     "app-cache": {
       "version": "0.0.1",
-      "identifier": "f614a61b00778cbe1fb88a35b26f40113cfd4203",
-      "dotted_decimal_identifier": "69265547920963468.53515123028243055.70442781852163",
+      "identifier": "cb5bd2c7f85ce8200cec2c1d99e344c2a89093ca",
+      "dotted_decimal_identifier": "57240381128465640.9021407746693603.75602842391498",
       "source": "../cookbooks/app-cache",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:ZeitOnline/app-cache-deployment.git",
-        "revision": "06ec93ff7ad83784095faefb74a1ef137636fc7a",
-        "working_tree_clean": true,
+        "revision": "a5cf9891785d15ad74caa0ec90b6cfef56e61222",
+        "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
-          "origin/HEAD -> origin/master",
-          "origin/master"
+          "origin/ZON-4726_provisioning_with_chef_and_kitchen"
         ]
       },
       "source_options": {
@@ -55,26 +129,26 @@
         "version": "3.1.0"
       }
     },
-    "build-essential": {
-      "version": "8.1.1",
-      "identifier": "2576e10b52babc28fbebc105c582a62d6a9b18a6",
-      "dotted_decimal_identifier": "10545283067984572.11535989042693506.182713992288422",
-      "cache_key": "build-essential-8.1.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/build-essential/versions/8.1.1/download",
+    "sysctl": {
+      "version": "1.0.5",
+      "identifier": "3d2a23146a32c45b9a3635a51b7814c9528f24d5",
+      "dotted_decimal_identifier": "17216303734076100.25783780499594104.22854906094805",
+      "cache_key": "sysctl-1.0.5-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/sysctl/versions/1.0.5/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/build-essential/versions/8.1.1/download",
-        "version": "8.1.1"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/sysctl/versions/1.0.5/download",
+        "version": "1.0.5"
       }
     },
-    "chef-client": {
-      "version": "10.0.5",
-      "identifier": "c24929b00cccdb95ce9b9286df6e0b1152109495",
-      "dotted_decimal_identifier": "54686588877982939.42166939103453038.12169019167893",
-      "cache_key": "chef-client-10.0.5-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-client/versions/10.0.5/download",
+    "poise-python": {
+      "version": "1.7.0",
+      "identifier": "ebe824b70a39ef71fee428dcbc5b18aa4d19c677",
+      "dotted_decimal_identifier": "66401863914371567.32086928259857499.27119717041783",
+      "cache_key": "poise-python-1.7.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-python/versions/1.7.0/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-client/versions/10.0.5/download",
-        "version": "10.0.5"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-python/versions/1.7.0/download",
+        "version": "1.7.0"
       }
     },
     "chef-sugar": {
@@ -86,83 +160,6 @@
       "source_options": {
         "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-sugar/versions/4.0.0/download",
         "version": "4.0.0"
-      }
-    },
-    "chef_handler": {
-      "version": "3.0.3",
-      "identifier": "4d1b0688e8699097d2e921a3271b2667dc8ffcde",
-      "dotted_decimal_identifier": "21703288087406992.42734620216862491.42227523910878",
-      "cache_key": "chef_handler-3.0.3-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef_handler/versions/3.0.3/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef_handler/versions/3.0.3/download",
-        "version": "3.0.3"
-      }
-    },
-    "cron": {
-      "version": "6.1.1",
-      "identifier": "bdafe22688fc65041cd1c1b0ae9bd2aaf96b6f68",
-      "dotted_decimal_identifier": "53392156442295397.1157587130166939.231631770840936",
-      "cache_key": "cron-6.1.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/cron/versions/6.1.1/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/cron/versions/6.1.1/download",
-        "version": "6.1.1"
-      }
-    },
-    "dpkg_autostart": {
-      "version": "0.2.0",
-      "identifier": "cc01affe684c2a2dc2f49508529730e301bde065",
-      "dotted_decimal_identifier": "57422750648126506.12880729680138903.53751544930405",
-      "cache_key": "dpkg_autostart-0.2.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/dpkg_autostart/versions/0.2.0/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/dpkg_autostart/versions/0.2.0/download",
-        "version": "0.2.0"
-      }
-    },
-    "erlang": {
-      "version": "6.0.0",
-      "identifier": "404c97d22be3a06e2e51f824a7dd812b167984dc",
-      "dotted_decimal_identifier": "18098613459346336.31013177028552669.142022060639452",
-      "cache_key": "erlang-6.0.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/erlang/versions/6.0.0/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/erlang/versions/6.0.0/download",
-        "version": "6.0.0"
-      }
-    },
-    "influxdb": {
-      "version": "6.1.3",
-      "identifier": "0e720f77b652fe959c7a591e9516cb0709df98c7",
-      "dotted_decimal_identifier": "4066060432462590.42111820825007382.223231090858183",
-      "cache_key": "influxdb-6.1.3-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/influxdb/versions/6.1.3/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/influxdb/versions/6.1.3/download",
-        "version": "6.1.3"
-      }
-    },
-    "logrotate": {
-      "version": "2.2.0",
-      "identifier": "53e09234a4f73cc13f46d833d2e5075cafddfaa8",
-      "dotted_decimal_identifier": "23609341620057916.54394244012692197.8094668946088",
-      "cache_key": "logrotate-2.2.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/logrotate/versions/2.2.0/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/logrotate/versions/2.2.0/download",
-        "version": "2.2.0"
-      }
-    },
-    "mingw": {
-      "version": "2.0.2",
-      "identifier": "87dc0e77dd1ad387858fafd0f542fc82bd73af24",
-      "dotted_decimal_identifier": "38241076554570451.38145974032463170.277638454423332",
-      "cache_key": "mingw-2.0.2-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/mingw/versions/2.0.2/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/mingw/versions/2.0.2/download",
-        "version": "2.0.2"
       }
     },
     "nodejs": {
@@ -187,81 +184,15 @@
         "version": "3.5.6"
       }
     },
-    "ohai": {
-      "version": "5.2.2",
-      "identifier": "0dece46a1d3ec262dc0cf46b597152b62506651b",
-      "dotted_decimal_identifier": "3919640474238658.27826495916038513.90942258701595",
-      "cache_key": "ohai-5.2.2-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/5.2.2/download",
+    "chef-client": {
+      "version": "10.0.5",
+      "identifier": "c24929b00cccdb95ce9b9286df6e0b1152109495",
+      "dotted_decimal_identifier": "54686588877982939.42166939103453038.12169019167893",
+      "cache_key": "chef-client-10.0.5-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-client/versions/10.0.5/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/5.2.2/download",
-        "version": "5.2.2"
-      }
-    },
-    "poise": {
-      "version": "2.8.1",
-      "identifier": "2977d974ad23cfc41e0920e1b2fe048eef1ed65a",
-      "dotted_decimal_identifier": "11672249894249423.55202119990489854.5011943642714",
-      "cache_key": "poise-2.8.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/poise/versions/2.8.1/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/poise/versions/2.8.1/download",
-        "version": "2.8.1"
-      }
-    },
-    "poise-archive": {
-      "version": "1.5.0",
-      "identifier": "60d072e2d2b984baf1bf8896ab581fc9043ab1a9",
-      "dotted_decimal_identifier": "27250789614532996.52620150600805208.34948219842985",
-      "cache_key": "poise-archive-1.5.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-archive/versions/1.5.0/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-archive/versions/1.5.0/download",
-        "version": "1.5.0"
-      }
-    },
-    "poise-languages": {
-      "version": "2.1.2",
-      "identifier": "ea84709a3b4d8b7e76d2f456ceac6a8c79b33513",
-      "dotted_decimal_identifier": "66010763709074827.35596495480082092.117151569753363",
-      "cache_key": "poise-languages-2.1.2-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-languages/versions/2.1.2/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-languages/versions/2.1.2/download",
-        "version": "2.1.2"
-      }
-    },
-    "poise-python": {
-      "version": "1.7.0",
-      "identifier": "ebe824b70a39ef71fee428dcbc5b18aa4d19c677",
-      "dotted_decimal_identifier": "66401863914371567.32086928259857499.27119717041783",
-      "cache_key": "poise-python-1.7.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-python/versions/1.7.0/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-python/versions/1.7.0/download",
-        "version": "1.7.0"
-      }
-    },
-    "rabbitmq": {
-      "version": "5.6.1",
-      "identifier": "ed458ff53f19c306484cb1f23e6d76f937a32ad6",
-      "dotted_decimal_identifier": "66786054077618627.1768344100421229.130812752374486",
-      "cache_key": "rabbitmq-5.6.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/rabbitmq/versions/5.6.1/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/rabbitmq/versions/5.6.1/download",
-        "version": "5.6.1"
-      }
-    },
-    "seven_zip": {
-      "version": "3.0.0",
-      "identifier": "91ab727ea5b817801e0799cc82a03910a806f91b",
-      "dotted_decimal_identifier": "41002379862456343.36061815012885152.62743701289243",
-      "cache_key": "seven_zip-3.0.0-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/3.0.0/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/3.0.0/download",
-        "version": "3.0.0"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-client/versions/10.0.5/download",
+        "version": "10.0.5"
       }
     },
     "ssh-keys": {
@@ -275,15 +206,92 @@
         "version": "1.2.7"
       }
     },
-    "sysctl": {
-      "version": "1.0.5",
-      "identifier": "3d2a23146a32c45b9a3635a51b7814c9528f24d5",
-      "dotted_decimal_identifier": "17216303734076100.25783780499594104.22854906094805",
-      "cache_key": "sysctl-1.0.5-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/sysctl/versions/1.0.5/download",
+    "chef_handler": {
+      "version": "3.0.3",
+      "identifier": "4d1b0688e8699097d2e921a3271b2667dc8ffcde",
+      "dotted_decimal_identifier": "21703288087406992.42734620216862491.42227523910878",
+      "cache_key": "chef_handler-3.0.3-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef_handler/versions/3.0.3/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/sysctl/versions/1.0.5/download",
-        "version": "1.0.5"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef_handler/versions/3.0.3/download",
+        "version": "3.0.3"
+      }
+    },
+    "rabbitmq": {
+      "version": "5.6.1",
+      "identifier": "ed458ff53f19c306484cb1f23e6d76f937a32ad6",
+      "dotted_decimal_identifier": "66786054077618627.1768344100421229.130812752374486",
+      "cache_key": "rabbitmq-5.6.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/rabbitmq/versions/5.6.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/rabbitmq/versions/5.6.1/download",
+        "version": "5.6.1"
+      }
+    },
+    "influxdb": {
+      "version": "6.1.3",
+      "identifier": "0e720f77b652fe959c7a591e9516cb0709df98c7",
+      "dotted_decimal_identifier": "4066060432462590.42111820825007382.223231090858183",
+      "cache_key": "influxdb-6.1.3-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/influxdb/versions/6.1.3/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/influxdb/versions/6.1.3/download",
+        "version": "6.1.3"
+      }
+    },
+    "poise": {
+      "version": "2.8.1",
+      "identifier": "2977d974ad23cfc41e0920e1b2fe048eef1ed65a",
+      "dotted_decimal_identifier": "11672249894249423.55202119990489854.5011943642714",
+      "cache_key": "poise-2.8.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/poise/versions/2.8.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/poise/versions/2.8.1/download",
+        "version": "2.8.1"
+      }
+    },
+    "poise-languages": {
+      "version": "2.1.2",
+      "identifier": "ea84709a3b4d8b7e76d2f456ceac6a8c79b33513",
+      "dotted_decimal_identifier": "66010763709074827.35596495480082092.117151569753363",
+      "cache_key": "poise-languages-2.1.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-languages/versions/2.1.2/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-languages/versions/2.1.2/download",
+        "version": "2.1.2"
+      }
+    },
+    "poise-archive": {
+      "version": "1.5.0",
+      "identifier": "60d072e2d2b984baf1bf8896ab581fc9043ab1a9",
+      "dotted_decimal_identifier": "27250789614532996.52620150600805208.34948219842985",
+      "cache_key": "poise-archive-1.5.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-archive/versions/1.5.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/poise-archive/versions/1.5.0/download",
+        "version": "1.5.0"
+      }
+    },
+    "build-essential": {
+      "version": "8.1.1",
+      "identifier": "2576e10b52babc28fbebc105c582a62d6a9b18a6",
+      "dotted_decimal_identifier": "10545283067984572.11535989042693506.182713992288422",
+      "cache_key": "build-essential-8.1.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/build-essential/versions/8.1.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/build-essential/versions/8.1.1/download",
+        "version": "8.1.1"
+      }
+    },
+    "ohai": {
+      "version": "5.2.2",
+      "identifier": "0dece46a1d3ec262dc0cf46b597152b62506651b",
+      "dotted_decimal_identifier": "3919640474238658.27826495916038513.90942258701595",
+      "cache_key": "ohai-5.2.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/5.2.2/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/5.2.2/download",
+        "version": "5.2.2"
       }
     },
     "windows": {
@@ -295,6 +303,39 @@
       "source_options": {
         "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/windows/versions/4.2.5/download",
         "version": "4.2.5"
+      }
+    },
+    "seven_zip": {
+      "version": "3.0.0",
+      "identifier": "91ab727ea5b817801e0799cc82a03910a806f91b",
+      "dotted_decimal_identifier": "41002379862456343.36061815012885152.62743701289243",
+      "cache_key": "seven_zip-3.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/3.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/3.0.0/download",
+        "version": "3.0.0"
+      }
+    },
+    "mingw": {
+      "version": "2.0.2",
+      "identifier": "87dc0e77dd1ad387858fafd0f542fc82bd73af24",
+      "dotted_decimal_identifier": "38241076554570451.38145974032463170.277638454423332",
+      "cache_key": "mingw-2.0.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/mingw/versions/2.0.2/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/mingw/versions/2.0.2/download",
+        "version": "2.0.2"
+      }
+    },
+    "erlang": {
+      "version": "6.0.0",
+      "identifier": "404c97d22be3a06e2e51f824a7dd812b167984dc",
+      "dotted_decimal_identifier": "18098613459346336.31013177028552669.142022060639452",
+      "cache_key": "erlang-6.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/erlang/versions/6.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/erlang/versions/6.0.0/download",
+        "version": "6.0.0"
       }
     },
     "yum-epel": {
@@ -319,82 +360,37 @@
         "version": "2.0.0"
       }
     },
-    "zeit-baseserver": {
-      "version": "0.1.2",
-      "identifier": "da7b1c04a354802f48335414330ca5dfe8caccb6",
-      "dotted_decimal_identifier": "61496905190036608.13308709196542732.182381101894838",
-      "cache_key": "zeit-baseserver-27b3060",
-      "origin": "git@styx2.zeit.de:/home/git/chef.git",
+    "dpkg_autostart": {
+      "version": "0.2.0",
+      "identifier": "cc01affe684c2a2dc2f49508529730e301bde065",
+      "dotted_decimal_identifier": "57422750648126506.12880729680138903.53751544930405",
+      "cache_key": "dpkg_autostart-0.2.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/dpkg_autostart/versions/0.2.0/download",
       "source_options": {
-        "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
-        "branch": "chefServer",
-        "rel": "cookbooks/zeit-baseserver"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/dpkg_autostart/versions/0.2.0/download",
+        "version": "0.2.0"
       }
     },
-    "zeit-corosync": {
-      "version": "0.1.4",
-      "identifier": "12f34dde14e8ce9e0930eb8c766139f33b86b266",
-      "dotted_decimal_identifier": "5334065344735438.44483152035214945.63716838519398",
-      "cache_key": "zeit-corosync-27b3060",
-      "origin": "git@styx2.zeit.de:/home/git/chef.git",
+    "logrotate": {
+      "version": "2.2.0",
+      "identifier": "53e09234a4f73cc13f46d833d2e5075cafddfaa8",
+      "dotted_decimal_identifier": "23609341620057916.54394244012692197.8094668946088",
+      "cache_key": "logrotate-2.2.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/logrotate/versions/2.2.0/download",
       "source_options": {
-        "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
-        "branch": "chefServer",
-        "rel": "cookbooks/zeit-corosync"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/logrotate/versions/2.2.0/download",
+        "version": "2.2.0"
       }
     },
-    "zeit-environments": {
-      "version": "2.0.0",
-      "identifier": "ea22fb6915936dd3c4cfc486cafda3690a7f10e8",
-      "dotted_decimal_identifier": "65903607745450861.59607616720390909.179671542993128",
-      "cache_key": "zeit-environments-27b3060",
-      "origin": "git@styx2.zeit.de:/home/git/chef.git",
+    "cron": {
+      "version": "6.1.1",
+      "identifier": "bdafe22688fc65041cd1c1b0ae9bd2aaf96b6f68",
+      "dotted_decimal_identifier": "53392156442295397.1157587130166939.231631770840936",
+      "cache_key": "cron-6.1.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/cron/versions/6.1.1/download",
       "source_options": {
-        "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
-        "branch": "chefServer",
-        "rel": "cookbooks/zeit-environments"
-      }
-    },
-    "zeit-online": {
-      "version": "0.5.5",
-      "identifier": "3489b49ab810f2484ff9741dfd79ae8cd6d4aac1",
-      "dotted_decimal_identifier": "14788107571826930.20354131136740729.191919922916033",
-      "cache_key": "zeit-online-27b3060",
-      "origin": "git@styx2.zeit.de:/home/git/chef.git",
-      "source_options": {
-        "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
-        "branch": "chefServer",
-        "rel": "cookbooks/zeit-online"
-      }
-    },
-    "zeit-patch": {
-      "version": "0.0.4",
-      "identifier": "02e2fb81cda2be218d3f9fc3c6469939991dfecd",
-      "dotted_decimal_identifier": "812519795827390.9443978634315334.168472661065421",
-      "cache_key": "zeit-patch-27b3060",
-      "origin": "git@styx2.zeit.de:/home/git/chef.git",
-      "source_options": {
-        "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
-        "branch": "chefServer",
-        "rel": "cookbooks/zeit-patch"
-      }
-    },
-    "zeit-zabbix": {
-      "version": "1.1.1",
-      "identifier": "9353d685b4c3b22934f9bc43c85f7e1c2c18296b",
-      "dotted_decimal_identifier": "41469002407789490.11598721255196767.138659463965035",
-      "cache_key": "zeit-zabbix-27b3060",
-      "origin": "git@styx2.zeit.de:/home/git/chef.git",
-      "source_options": {
-        "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
-        "branch": "chefServer",
-        "rel": "cookbooks/zeit-zabbix"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/cron/versions/6.1.1/download",
+        "version": "6.1.1"
       }
     }
   },
@@ -406,6 +402,30 @@
   },
   "solution_dependencies": {
     "Policyfile": [
+      [
+        "zeit-online",
+        ">= 0.0.0"
+      ],
+      [
+        "zeit-baseserver",
+        ">= 0.0.0"
+      ],
+      [
+        "zeit-patch",
+        ">= 0.0.0"
+      ],
+      [
+        "zeit-zabbix",
+        ">= 0.0.0"
+      ],
+      [
+        "zeit-environments",
+        ">= 0.0.0"
+      ],
+      [
+        "zeit-corosync",
+        ">= 0.0.0"
+      ],
       [
         "app-cache",
         ">= 0.0.0"
@@ -419,44 +439,16 @@
         "= 3.1.0"
       ],
       [
-        "build-essential",
-        "= 8.1.1"
+        "sysctl",
+        "= 1.0.5"
       ],
       [
-        "chef-client",
-        "= 10.0.5"
+        "poise-python",
+        "= 1.7.0"
       ],
       [
         "chef-sugar",
         "= 4.0.0"
-      ],
-      [
-        "chef_handler",
-        "= 3.0.3"
-      ],
-      [
-        "cron",
-        "= 6.1.1"
-      ],
-      [
-        "dpkg_autostart",
-        "= 0.2.0"
-      ],
-      [
-        "erlang",
-        "= 6.0.0"
-      ],
-      [
-        "influxdb",
-        "= 6.1.3"
-      ],
-      [
-        "logrotate",
-        "= 2.2.0"
-      ],
-      [
-        "mingw",
-        "= 2.0.2"
       ],
       [
         "nodejs",
@@ -467,44 +459,60 @@
         "= 3.5.6"
       ],
       [
-        "ohai",
-        "= 5.2.2"
-      ],
-      [
-        "poise",
-        "= 2.8.1"
-      ],
-      [
-        "poise-archive",
-        "= 1.5.0"
-      ],
-      [
-        "poise-languages",
-        "= 2.1.2"
-      ],
-      [
-        "poise-python",
-        "= 1.7.0"
-      ],
-      [
-        "rabbitmq",
-        "= 5.6.1"
-      ],
-      [
-        "seven_zip",
-        "= 3.0.0"
+        "chef-client",
+        "= 10.0.5"
       ],
       [
         "ssh-keys",
         "= 1.2.7"
       ],
       [
-        "sysctl",
-        "= 1.0.5"
+        "chef_handler",
+        "= 3.0.3"
+      ],
+      [
+        "rabbitmq",
+        "= 5.6.1"
+      ],
+      [
+        "influxdb",
+        "= 6.1.3"
+      ],
+      [
+        "poise",
+        "= 2.8.1"
+      ],
+      [
+        "poise-languages",
+        "= 2.1.2"
+      ],
+      [
+        "poise-archive",
+        "= 1.5.0"
+      ],
+      [
+        "build-essential",
+        "= 8.1.1"
+      ],
+      [
+        "ohai",
+        "= 5.2.2"
       ],
       [
         "windows",
         "= 4.2.5"
+      ],
+      [
+        "seven_zip",
+        "= 3.0.0"
+      ],
+      [
+        "mingw",
+        "= 2.0.2"
+      ],
+      [
+        "erlang",
+        "= 6.0.0"
       ],
       [
         "yum-epel",
@@ -515,251 +523,24 @@
         "= 2.0.0"
       ],
       [
-        "zeit-baseserver",
-        ">= 0.0.0"
+        "dpkg_autostart",
+        "= 0.2.0"
       ],
       [
-        "zeit-corosync",
-        ">= 0.0.0"
+        "logrotate",
+        "= 2.2.0"
       ],
       [
-        "zeit-environments",
-        ">= 0.0.0"
-      ],
-      [
-        "zeit-online",
-        ">= 0.0.0"
-      ],
-      [
-        "zeit-patch",
-        ">= 0.0.0"
-      ],
-      [
-        "zeit-zabbix",
-        ">= 0.0.0"
+        "cron",
+        "= 6.1.1"
       ]
     ],
     "dependencies": {
-      "app-cache (0.0.1)": [
-        [
-          "apt",
-          ">= 0.0.0"
-        ],
-        [
-          "ark",
-          ">= 0.0.0"
-        ]
-      ],
-      "apt (7.0.0)": [
-
-      ],
-      "ark (3.1.0)": [
-        [
-          "build-essential",
-          ">= 0.0.0"
-        ],
-        [
-          "windows",
-          ">= 0.0.0"
-        ],
-        [
-          "seven_zip",
-          ">= 0.0.0"
-        ]
-      ],
-      "build-essential (8.1.1)": [
-        [
-          "seven_zip",
-          ">= 0.0.0"
-        ],
-        [
-          "mingw",
-          ">= 1.1.0"
-        ]
-      ],
-      "chef-client (10.0.5)": [
-        [
-          "cron",
-          ">= 4.2.0"
-        ],
-        [
-          "logrotate",
-          ">= 1.9.0"
-        ],
-        [
-          "windows",
-          ">= 2.0.0"
-        ]
-      ],
-      "chef-sugar (4.0.0)": [
-
-      ],
-      "chef_handler (3.0.3)": [
-
-      ],
-      "cron (6.1.1)": [
-
-      ],
-      "dpkg_autostart (0.2.0)": [
-
-      ],
-      "erlang (6.0.0)": [
-        [
-          "yum-epel",
-          ">= 0.0.0"
-        ],
-        [
-          "yum-erlang_solutions",
-          ">= 1.0.3"
-        ],
-        [
-          "build-essential",
-          ">= 0.0.0"
-        ]
-      ],
-      "influxdb (6.1.3)": [
-        [
-          "nodejs",
-          ">= 2.4.4"
-        ],
-        [
-          "chef_handler",
-          ">= 0.0.0"
-        ]
-      ],
-      "logrotate (2.2.0)": [
-
-      ],
-      "mingw (2.0.2)": [
-        [
-          "seven_zip",
-          ">= 0.0.0"
-        ]
-      ],
-      "nodejs (5.0.0)": [
-        [
-          "build-essential",
-          ">= 0.0.0"
-        ],
-        [
-          "ark",
-          ">= 2.0.2"
-        ]
-      ],
-      "ntp (3.5.6)": [
-
-      ],
-      "ohai (5.2.2)": [
-
-      ],
-      "poise (2.8.1)": [
-
-      ],
-      "poise-archive (1.5.0)": [
-        [
-          "poise",
-          "~> 2.6"
-        ]
-      ],
-      "poise-languages (2.1.2)": [
-        [
-          "poise",
-          "~> 2.5"
-        ],
-        [
-          "poise-archive",
-          "~> 1.0"
-        ]
-      ],
-      "poise-python (1.7.0)": [
-        [
-          "poise",
-          "~> 2.7"
-        ],
-        [
-          "poise-languages",
-          "~> 2.0"
-        ]
-      ],
-      "rabbitmq (5.6.1)": [
-        [
-          "erlang",
-          ">= 0.0.0"
-        ],
-        [
-          "yum-epel",
-          ">= 0.0.0"
-        ],
-        [
-          "yum-erlang_solutions",
-          ">= 0.0.0"
-        ],
-        [
-          "dpkg_autostart",
-          ">= 0.0.0"
-        ],
-        [
-          "logrotate",
-          ">= 0.0.0"
-        ]
-      ],
-      "seven_zip (3.0.0)": [
-        [
-          "windows",
-          ">= 0.0.0"
-        ]
-      ],
-      "ssh-keys (1.2.7)": [
-
-      ],
-      "sysctl (1.0.5)": [
-        [
-          "ohai",
-          ">= 5.0.0"
-        ]
-      ],
-      "windows (4.2.5)": [
-
-      ],
-      "yum-epel (3.1.0)": [
-
-      ],
-      "yum-erlang_solutions (2.0.0)": [
-        [
-          "yum-epel",
-          ">= 0.0.0"
-        ]
-      ],
-      "zeit-baseserver (0.1.2)": [
-        [
-          "zeit-online",
-          ">= 0.0.0"
-        ],
-        [
-          "zeit-patch",
-          ">= 0.0.0"
-        ],
-        [
-          "zeit-zabbix",
-          ">= 0.0.0"
-        ],
-        [
-          "chef-client",
-          ">= 0.0.0"
-        ],
-        [
-          "ssh-keys",
-          ">= 0.0.0"
-        ]
-      ],
       "zeit-corosync (0.1.4)": [
         [
           "sysctl",
           ">= 0.0.0"
         ]
-      ],
-      "zeit-environments (2.0.0)": [
-
       ],
       "zeit-online (0.5.5)": [
         [
@@ -787,6 +568,28 @@
           ">= 0.0.0"
         ]
       ],
+      "zeit-baseserver (0.1.2)": [
+        [
+          "zeit-online",
+          ">= 0.0.0"
+        ],
+        [
+          "zeit-patch",
+          ">= 0.0.0"
+        ],
+        [
+          "zeit-zabbix",
+          ">= 0.0.0"
+        ],
+        [
+          "chef-client",
+          ">= 0.0.0"
+        ],
+        [
+          "ssh-keys",
+          ">= 0.0.0"
+        ]
+      ],
       "zeit-patch (0.0.4)": [
         [
           "apt",
@@ -808,6 +611,199 @@
         ],
         [
           "influxdb",
+          ">= 0.0.0"
+        ]
+      ],
+      "zeit-environments (2.0.0)": [
+
+      ],
+      "apt (7.0.0)": [
+
+      ],
+      "ark (3.1.0)": [
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ],
+        [
+          "windows",
+          ">= 0.0.0"
+        ],
+        [
+          "seven_zip",
+          ">= 0.0.0"
+        ]
+      ],
+      "sysctl (1.0.5)": [
+        [
+          "ohai",
+          ">= 5.0.0"
+        ]
+      ],
+      "poise-python (1.7.0)": [
+        [
+          "poise",
+          "~> 2.7"
+        ],
+        [
+          "poise-languages",
+          "~> 2.0"
+        ]
+      ],
+      "chef-sugar (4.0.0)": [
+
+      ],
+      "nodejs (5.0.0)": [
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ],
+        [
+          "ark",
+          ">= 2.0.2"
+        ]
+      ],
+      "ntp (3.5.6)": [
+
+      ],
+      "chef-client (10.0.5)": [
+        [
+          "cron",
+          ">= 4.2.0"
+        ],
+        [
+          "logrotate",
+          ">= 1.9.0"
+        ],
+        [
+          "windows",
+          ">= 2.0.0"
+        ]
+      ],
+      "ssh-keys (1.2.7)": [
+
+      ],
+      "chef_handler (3.0.3)": [
+
+      ],
+      "rabbitmq (5.6.1)": [
+        [
+          "erlang",
+          ">= 0.0.0"
+        ],
+        [
+          "yum-epel",
+          ">= 0.0.0"
+        ],
+        [
+          "yum-erlang_solutions",
+          ">= 0.0.0"
+        ],
+        [
+          "dpkg_autostart",
+          ">= 0.0.0"
+        ],
+        [
+          "logrotate",
+          ">= 0.0.0"
+        ]
+      ],
+      "influxdb (6.1.3)": [
+        [
+          "nodejs",
+          ">= 2.4.4"
+        ],
+        [
+          "chef_handler",
+          ">= 0.0.0"
+        ]
+      ],
+      "poise (2.8.1)": [
+
+      ],
+      "poise-languages (2.1.2)": [
+        [
+          "poise",
+          "~> 2.5"
+        ],
+        [
+          "poise-archive",
+          "~> 1.0"
+        ]
+      ],
+      "poise-archive (1.5.0)": [
+        [
+          "poise",
+          "~> 2.6"
+        ]
+      ],
+      "build-essential (8.1.1)": [
+        [
+          "seven_zip",
+          ">= 0.0.0"
+        ],
+        [
+          "mingw",
+          ">= 1.1.0"
+        ]
+      ],
+      "ohai (5.2.2)": [
+
+      ],
+      "windows (4.2.5)": [
+
+      ],
+      "seven_zip (3.0.0)": [
+        [
+          "windows",
+          ">= 0.0.0"
+        ]
+      ],
+      "mingw (2.0.2)": [
+        [
+          "seven_zip",
+          ">= 0.0.0"
+        ]
+      ],
+      "erlang (6.0.0)": [
+        [
+          "yum-epel",
+          ">= 0.0.0"
+        ],
+        [
+          "yum-erlang_solutions",
+          ">= 1.0.3"
+        ],
+        [
+          "build-essential",
+          ">= 0.0.0"
+        ]
+      ],
+      "yum-epel (3.1.0)": [
+
+      ],
+      "yum-erlang_solutions (2.0.0)": [
+        [
+          "yum-epel",
+          ">= 0.0.0"
+        ]
+      ],
+      "dpkg_autostart (0.2.0)": [
+
+      ],
+      "logrotate (2.2.0)": [
+
+      ],
+      "cron (6.1.1)": [
+
+      ],
+      "app-cache (0.0.1)": [
+        [
+          "apt",
+          ">= 0.0.0"
+        ],
+        [
+          "ark",
           ">= 0.0.0"
         ]
       ]
