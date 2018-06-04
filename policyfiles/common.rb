@@ -13,7 +13,7 @@ def zon_cookbook(name)
   cookbook(name, {
     git: "git@styx2.zeit.de:/home/git/chef.git",
     branch: "chefServer",
-    revision: "27b3060",
+    revision: "58b27b2",
     rel: "cookbooks/#{name}",
   })
 end

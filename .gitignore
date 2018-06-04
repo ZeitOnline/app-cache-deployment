@@ -107,3 +107,6 @@ work/
 
 # macOS
 .DS_Store
+
+#chef
+.kitchen/

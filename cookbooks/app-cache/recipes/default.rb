@@ -1,3 +1,1 @@
-apt_update 'update'
-
-package "crmsh"
+apt_update "update"

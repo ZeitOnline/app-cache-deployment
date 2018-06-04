@@ -1,110 +1,109 @@
 {
-  "revision_id": "bf51c6df9aa3df92ca0d46417b6fe2fd46c36fc9bfa8f7a8cf98ce65389d4054",
+  "revision_id": "61d38f869afb9bba351e5584f57f3fd71172e75d79a68801a7bd73b1c826a530",
   "name": "app-cache",
   "run_list": [
     "recipe[app-cache::default]",
-    "recipe[app-cache::corosync]",
+    "recipe[app-cache::haproxy]",
     "recipe[zeit-corosync::haproxy]",
-    "recipe[zeit-corosync::default]",
-    "recipe[app-cache::haproxy]"
+    "recipe[zeit-corosync::default]"
   ],
   "cookbook_locks": {
     "zeit-online": {
-      "version": "0.5.5",
-      "identifier": "d64b6c77395b169977a9d201194739ef6e322cac",
-      "dotted_decimal_identifier": "60318574244879126.43197242693196103.63700508748972",
-      "cache_key": "zeit-online-27b3060",
+      "version": "0.5.8",
+      "identifier": "c735d61c4402a9d05410471ae7d59f40c9a62292",
+      "dotted_decimal_identifier": "56072714078913193.58639224044971989.175100609831570",
+      "cache_key": "zeit-online-58b27b2",
       "origin": "git@styx2.zeit.de:/home/git/chef.git",
       "source_options": {
         "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
+        "revision": "58b27b2",
         "branch": "chefServer",
         "rel": "cookbooks/zeit-online"
       }
     },
     "zeit-baseserver": {
-      "version": "0.1.2",
-      "identifier": "da7b1c04a354802f48335414330ca5dfe8caccb6",
-      "dotted_decimal_identifier": "61496905190036608.13308709196542732.182381101894838",
-      "cache_key": "zeit-baseserver-27b3060",
+      "version": "0.1.3",
+      "identifier": "4fd67657154adbcc7b150499117b8a1e96b40b67",
+      "dotted_decimal_identifier": "22472326915640027.57556225450643835.151863982033767",
+      "cache_key": "zeit-baseserver-58b27b2",
       "origin": "git@styx2.zeit.de:/home/git/chef.git",
       "source_options": {
         "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
+        "revision": "58b27b2",
         "branch": "chefServer",
         "rel": "cookbooks/zeit-baseserver"
       }
     },
     "zeit-patch": {
-      "version": "0.0.4",
-      "identifier": "3abf8945726ab96fcaa53fc6e6806133ba47114f",
-      "dotted_decimal_identifier": "16536144945769145.31466533503297152.106874796446031",
-      "cache_key": "zeit-patch-27b3060",
+      "version": "0.0.5",
+      "identifier": "54d4045e71b77cf3c04cae6a75e9e4bdaa35dec5",
+      "dotted_decimal_identifier": "23877013273163644.68609854916949481.251503255609029",
+      "cache_key": "zeit-patch-58b27b2",
       "origin": "git@styx2.zeit.de:/home/git/chef.git",
       "source_options": {
         "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
+        "revision": "58b27b2",
         "branch": "chefServer",
         "rel": "cookbooks/zeit-patch"
       }
     },
     "zeit-zabbix": {
-      "version": "1.1.1",
-      "identifier": "b5ac25e5e8571c387a98416cab0e31a2e216ce51",
-      "dotted_decimal_identifier": "51136249555605276.15897393047055118.54575647608401",
-      "cache_key": "zeit-zabbix-27b3060",
+      "version": "1.1.3",
+      "identifier": "34f757274e0a46ff491de73b3704a36045e9743f",
+      "dotted_decimal_identifier": "14908652482595398.71856511843514116.179633885115455",
+      "cache_key": "zeit-zabbix-58b27b2",
       "origin": "git@styx2.zeit.de:/home/git/chef.git",
       "source_options": {
         "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
+        "revision": "58b27b2",
         "branch": "chefServer",
         "rel": "cookbooks/zeit-zabbix"
       }
     },
     "zeit-environments": {
       "version": "2.0.0",
-      "identifier": "ea22fb6915936dd3c4cfc486cafda3690a7f10e8",
-      "dotted_decimal_identifier": "65903607745450861.59607616720390909.179671542993128",
-      "cache_key": "zeit-environments-27b3060",
+      "identifier": "2d298e0b8c9911bc2958d58c1c7f5e81163179b2",
+      "dotted_decimal_identifier": "12712064007837969.52962757138193535.103908516133298",
+      "cache_key": "zeit-environments-58b27b2",
       "origin": "git@styx2.zeit.de:/home/git/chef.git",
       "source_options": {
         "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
+        "revision": "58b27b2",
         "branch": "chefServer",
         "rel": "cookbooks/zeit-environments"
       }
     },
-    "zeit-corosync": {
-      "version": "0.1.4",
-      "identifier": "b6562b3987f0a08742661e608bb0e47246141d56",
-      "dotted_decimal_identifier": "51323189410132128.38072128219679664.251179453128022",
-      "cache_key": "zeit-corosync-27b3060",
-      "origin": "git@styx2.zeit.de:/home/git/chef.git",
-      "source_options": {
-        "git": "git@styx2.zeit.de:/home/git/chef.git",
-        "revision": "27b3060",
-        "branch": "chefServer",
-        "rel": "cookbooks/zeit-corosync"
-      }
-    },
     "app-cache": {
       "version": "0.0.1",
-      "identifier": "cb5bd2c7f85ce8200cec2c1d99e344c2a89093ca",
-      "dotted_decimal_identifier": "57240381128465640.9021407746693603.75602842391498",
+      "identifier": "221447e86c7e38fd2c1ecff4124acefe6ad14ad4",
+      "dotted_decimal_identifier": "9592448282820152.71261679957316170.227592109116116",
       "source": "../cookbooks/app-cache",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:ZeitOnline/app-cache-deployment.git",
-        "revision": "a5cf9891785d15ad74caa0ec90b6cfef56e61222",
+        "revision": "19afbb7ee27ce78044eacae26d3175757c3f6e65",
         "working_tree_clean": false,
-        "published": true,
+        "published": false,
         "synchronized_remote_branches": [
-          "origin/ZON-4726_provisioning_with_chef_and_kitchen"
+
         ]
       },
       "source_options": {
         "path": "../cookbooks/app-cache"
+      }
+    },
+    "zeit-corosync": {
+      "version": "0.1.5",
+      "identifier": "7973693ac6f3c29fd2baebb9f7f9113b404fae8b",
+      "dotted_decimal_identifier": "34185367976866754.44986221557577721.18946179706507",
+      "cache_key": "zeit-corosync-58b27b2",
+      "origin": "git@styx2.zeit.de:/home/git/chef.git",
+      "source_options": {
+        "git": "git@styx2.zeit.de:/home/git/chef.git",
+        "revision": "58b27b2",
+        "branch": "chefServer",
+        "rel": "cookbooks/zeit-corosync"
       }
     },
     "apt": {
@@ -423,11 +422,11 @@
         ">= 0.0.0"
       ],
       [
-        "zeit-corosync",
+        "app-cache",
         ">= 0.0.0"
       ],
       [
-        "app-cache",
+        "zeit-corosync",
         ">= 0.0.0"
       ],
       [
@@ -536,13 +535,13 @@
       ]
     ],
     "dependencies": {
-      "zeit-corosync (0.1.4)": [
+      "zeit-corosync (0.1.5)": [
         [
           "sysctl",
           ">= 0.0.0"
         ]
       ],
-      "zeit-online (0.5.5)": [
+      "zeit-online (0.5.8)": [
         [
           "apt",
           ">= 0.0.0"
@@ -568,7 +567,7 @@
           ">= 0.0.0"
         ]
       ],
-      "zeit-baseserver (0.1.2)": [
+      "zeit-baseserver (0.1.3)": [
         [
           "zeit-online",
           ">= 0.0.0"
@@ -590,13 +589,13 @@
           ">= 0.0.0"
         ]
       ],
-      "zeit-patch (0.0.4)": [
+      "zeit-patch (0.0.5)": [
         [
           "apt",
           ">= 0.0.0"
         ]
       ],
-      "zeit-zabbix (1.1.1)": [
+      "zeit-zabbix (1.1.3)": [
         [
           "apt",
           ">= 0.0.0"
