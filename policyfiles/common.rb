@@ -20,6 +20,6 @@ end
 
 
 def local_cookbook(name)
-  cookbook "app-cache", path: File.expand_path(
+  cookbook "zeit-app-cache", path: File.expand_path(
     File.dirname(__FILE__) + "/../cookbooks/#{name}")
 end

@@ -1,9 +1,10 @@
 {
-  "revision_id": "61d38f869afb9bba351e5584f57f3fd71172e75d79a68801a7bd73b1c826a530",
+  "revision_id": "aa08776e112b69acdcede70c4c19be7dae7e3b4cd3377017222a8b2c3b46c36f",
   "name": "app-cache",
   "run_list": [
-    "recipe[app-cache::default]",
-    "recipe[app-cache::haproxy]",
+    "recipe[zeit-app-cache::default]",
+    "recipe[zeit-app-cache::varnish]",
+    "recipe[zeit-app-cache::haproxy]",
     "recipe[zeit-corosync::haproxy]",
     "recipe[zeit-corosync::default]"
   ],
@@ -73,16 +74,16 @@
         "rel": "cookbooks/zeit-environments"
       }
     },
-    "app-cache": {
+    "zeit-app-cache": {
       "version": "0.0.1",
-      "identifier": "221447e86c7e38fd2c1ecff4124acefe6ad14ad4",
-      "dotted_decimal_identifier": "9592448282820152.71261679957316170.227592109116116",
-      "source": "../cookbooks/app-cache",
+      "identifier": "ee3c1989cdd64776a7874524017d564e05cbc430",
+      "dotted_decimal_identifier": "67057124840953415.33398246674268541.94893104677936",
+      "source": "../cookbooks/zeit-app-cache",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:ZeitOnline/app-cache-deployment.git",
-        "revision": "19afbb7ee27ce78044eacae26d3175757c3f6e65",
+        "revision": "c7dcc481bbb9d3ef6162e94c8d49f1e4aede0acd",
         "working_tree_clean": false,
         "published": false,
         "synchronized_remote_branches": [
@@ -90,7 +91,7 @@
         ]
       },
       "source_options": {
-        "path": "../cookbooks/app-cache"
+        "path": "../cookbooks/zeit-app-cache"
       }
     },
     "zeit-corosync": {
@@ -422,7 +423,7 @@
         ">= 0.0.0"
       ],
       [
-        "app-cache",
+        "zeit-app-cache",
         ">= 0.0.0"
       ],
       [
@@ -796,7 +797,7 @@
       "cron (6.1.1)": [
 
       ],
-      "app-cache (0.0.1)": [
+      "zeit-app-cache (0.0.1)": [
         [
           "apt",
           ">= 0.0.0"

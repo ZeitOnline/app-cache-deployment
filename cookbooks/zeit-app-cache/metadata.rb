@@ -1,4 +1,4 @@
-name             'app-cache'
+name             'zeit-app-cache'
 version          '0.0.1'
 
 maintainer       'ZEIT ONLINE GmbH'

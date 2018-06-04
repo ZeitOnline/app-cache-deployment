@@ -31,6 +31,8 @@ suites:
     attributes:
       zeit_rz: local
       corosync: {clustername: 'kitchen'}
+      haproxy:
+          access_log_path: "/var/log/haproxy"
 
   - name: app-cache02
     provisioner:
@@ -41,3 +43,5 @@ suites:
     attributes:
       zeit_rz: local
       corosync: {clustername: 'kitchen'}
+      haproxy:
+          access_log_path: "/var/log/haproxy"
