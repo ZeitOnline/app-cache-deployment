@@ -1,5 +1,5 @@
 {
-  "revision_id": "aa08776e112b69acdcede70c4c19be7dae7e3b4cd3377017222a8b2c3b46c36f",
+  "revision_id": "c22d36aa6ded886e6effc3266736d01b97367b704ff0f94a4a2be455e088a926",
   "name": "app-cache",
   "run_list": [
     "recipe[zeit-app-cache::default]",
@@ -76,18 +76,18 @@
     },
     "zeit-app-cache": {
       "version": "0.0.1",
-      "identifier": "ee3c1989cdd64776a7874524017d564e05cbc430",
-      "dotted_decimal_identifier": "67057124840953415.33398246674268541.94893104677936",
+      "identifier": "46f5617b5a77b9ef2c31df872a04a0d06fdaeb10",
+      "dotted_decimal_identifier": "19973047399905209.67321112149043716.176817090259728",
       "source": "../cookbooks/zeit-app-cache",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:ZeitOnline/app-cache-deployment.git",
-        "revision": "c7dcc481bbb9d3ef6162e94c8d49f1e4aede0acd",
+        "revision": "2130f5919470627b71133b31a700d5cd770944a6",
         "working_tree_clean": false,
-        "published": false,
+        "published": true,
         "synchronized_remote_branches": [
-
+          "origin/ZON-4726_provisioning_with_chef_and_kitchen"
         ]
       },
       "source_options": {

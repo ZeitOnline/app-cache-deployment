@@ -13,12 +13,12 @@ if node["haproxy"] and node["haproxy"]["access_log_path"] then
   end
 
   template "/etc/logrotate.d/haproxy" do
-    source "haproxy-logrotated.erb"
+    source "haproxy/logrotated.erb"
   end
 
   template "/etc/cron.hourly/logrotate-haproxy" do
     mode "0755"
-    source "haproxy-logrotate.erb"
+    source "haproxy/logrotate.erb"
   end
 end
 
