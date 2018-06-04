@@ -8,7 +8,7 @@ if node["haproxy"] and node["haproxy"]["access_log_path"] then
   end
 
   template "/etc/haproxy/haproxy.cfg" do
-    source "haproxy/app-cache.zeit.de.conf.erb"
+    source "haproxy/haproxy.conf.erb"
     notifies :restart, 'service[haproxy]', :delayed
   end
 
@@ -29,3 +29,8 @@ end
 service "haproxy" do
   action [:start, :enable]
 end
+
+# XXX manually executed (due to Gaertner?):
+# - enable UDP in /etc/rsyslog.conf
+# - change selector to "local1.*" instead of "program haproxy" in
+#   /etc/rsyslog.d/haproxy.conf
