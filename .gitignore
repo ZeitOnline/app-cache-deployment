@@ -104,3 +104,10 @@ ENV/
 .batou-lock
 .batou/
 work/
+
+# macOS
+.DS_Store
+
+#chef
+.kitchen/
+report_integration_app-cache.xml
