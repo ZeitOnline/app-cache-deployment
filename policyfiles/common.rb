@@ -1,10 +1,6 @@
 def common()
   default_source :supermarket
 
-  zon_cookbook "zeit-online"
-  zon_cookbook "zeit-baseserver"
-  zon_cookbook "zeit-patch"
-  zon_cookbook "zeit-zabbix"
   zon_cookbook "zeit-environments"
 end
 
@@ -13,7 +9,7 @@ def zon_cookbook(name)
   cookbook(name, {
     git: "git@styx2.zeit.de:/home/git/chef.git",
     branch: "chefServer",
-    revision: "58b27b2",
+    revision: "04ea556",
     rel: "cookbooks/#{name}",
   })
 end

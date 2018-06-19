@@ -110,3 +110,4 @@ work/
 
 #chef
 .kitchen/
+report_integration_app-cache.xml

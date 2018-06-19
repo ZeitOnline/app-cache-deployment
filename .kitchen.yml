@@ -7,41 +7,33 @@ provisioner:
   name: chef_zero
   product_name: chef
   product_version: 12
-  data_bags_path: 'test/data_bags'
 
 
 platforms:
   - name: ubuntu-18.04
+    <% if ENV["KITCHEN_PROVIDER"] == "virtualbox" %>
     driver:
       provider: virtualbox
-      box: bento/ubuntu-18.04
+      box: bento/ubuntu-16.04
       customize:
         memory: 2048
+    <% else %>
+    driver:
+      box: developerinlondon/ubuntu_lxc_xenial_x64
+      provider: lxc
+    <% end %>
 
 verifier:
   name: inspec
+  <% if ENV["KITCHEN_FORMAT"] == "junit" %>
+  format: junit
+  output: report_integration_%{suite}.xml
+  <% end %>
 
 suites:
-  - name: app-cache01
+  - name: app-cache
     provisioner:
       policyfile_path: policyfiles/app-cache.rb
     driver:
       network:
         - ['private_network', {ip: '192.168.34.13'}]
-    attributes:
-      zeit_rz: local
-      corosync: {clustername: 'kitchen'}
-      haproxy:
-          access_log_path: "/var/log/haproxy"
-
-  - name: app-cache02
-    provisioner:
-      policyfile_path: policyfiles/app-cache.rb
-    driver:
-      network:
-        - ['private_network', {ip: '192.168.34.14'}]
-    attributes:
-      zeit_rz: local
-      corosync: {clustername: 'kitchen'}
-      haproxy:
-          access_log_path: "/var/log/haproxy"
