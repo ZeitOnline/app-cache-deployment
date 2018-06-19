@@ -1,5 +1,5 @@
 {
-  "revision_id": "c22d36aa6ded886e6effc3266736d01b97367b704ff0f94a4a2be455e088a926",
+  "revision_id": "3cdf76f38217478df614172cfbb3c2599f65cd3ff4810f50a8dc0b37012807e5",
   "name": "app-cache",
   "run_list": [
     "recipe[zeit-app-cache::default]",
@@ -76,14 +76,14 @@
     },
     "zeit-app-cache": {
       "version": "0.0.1",
-      "identifier": "46f5617b5a77b9ef2c31df872a04a0d06fdaeb10",
-      "dotted_decimal_identifier": "19973047399905209.67321112149043716.176817090259728",
+      "identifier": "4e8ebe868b6f46d5fefc8d74775bf1115f63645a",
+      "dotted_decimal_identifier": "22111997135646534.60234530697803611.265056917087322",
       "source": "../cookbooks/zeit-app-cache",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:ZeitOnline/app-cache-deployment.git",
-        "revision": "2130f5919470627b71133b31a700d5cd770944a6",
+        "revision": "9d7f89c49dcafcabc038ffeb87ac87f8f4d282d0",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
