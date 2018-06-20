@@ -83,7 +83,7 @@ sub vcl_recv {
             req.backend_hint == academics ||
             req.backend_hint == brandeins ||
             req.backend_hint == liveblog3api ||
-            req.backend_hint == solr ||
+            req.backend_hint == solr.backend() ||
             req.backend_hint == spektrum ||
             req.backend_hint == zett) {
         unset req.http.Cookie;
