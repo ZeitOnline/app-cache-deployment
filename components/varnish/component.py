@@ -3,7 +3,7 @@ from batou.lib.file import Directory, File
 
 class Varnish(Component):
 
-    env = ".dev"
+    subdomain = ".dev"
 
     def configure(self):
         self += File(

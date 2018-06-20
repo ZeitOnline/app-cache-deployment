@@ -7,7 +7,7 @@ backend agatho {
 }
 
 backend zett {
-    .host = "app-cache{{component.env}}.zeit.de";
+    .host = "app-cache{{component.subdomain}}.zeit.de";
     .port = "80";
     .connect_timeout = 10s;
     .first_byte_timeout = 10s;
@@ -23,7 +23,7 @@ backend spektrum {
 }
 
 backend brandeins {
-    .host = "app-cache{{component.env}}.zeit.de";
+    .host = "app-cache{{component.subdomain}}.zeit.de";
     .port = "80";
     .connect_timeout = 10s;
     .first_byte_timeout = 10s;

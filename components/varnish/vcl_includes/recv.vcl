@@ -20,7 +20,7 @@ sub vcl_recv {
     # -- community --
     if (req.url ~ "^/agatho/") {
         set req.backend_hint = agatho;
-        set req.http.host = "community01{{component.env}}.zeit.de";
+        set req.http.host = "community01{{component.subdomain}}.zeit.de";
     }
 
     # -- search --
