@@ -68,3 +68,19 @@ backend minerva {
     }
 }
 
+backend liveblog3api {
+    .host = "app-cache{{component.subdomain}}.zeit.de";
+    .port = "80";
+    .connect_timeout = 10s;
+    .first_byte_timeout = 10s;
+    .between_bytes_timeout = 1s;
+    .host_header = "zeit-api.liveblog.pro";
+    .probe = {
+        .url = "/api";
+        .timeout = 3s;
+        .interval = 10s;
+        .window = 8;
+        .threshold = 3;
+        .initial = 3;
+    }
+}
