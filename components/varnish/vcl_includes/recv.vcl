@@ -26,7 +26,7 @@ sub vcl_recv {
     # -- search --
     if (req.url ~ "^/website-solr/select") {
         set req.url = regsub(req.url, "^/website-solr", "/solr/website");
-        set req.backend_hint = solr;
+        set req.backend_hint = solr.backend();
     }
 
     # -- liveblog --
