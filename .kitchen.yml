@@ -37,3 +37,8 @@ suites:
     driver:
       network:
         - ['private_network', {ip: '192.168.34.13'}]
+    attributes: 
+      batou:
+        varnish_config: 
+          - "/srv/app-cache/deployment/work/varnish/default.vcl"
+          - "/srv/app-cache/deployment/work/varnish/vcl_includes"

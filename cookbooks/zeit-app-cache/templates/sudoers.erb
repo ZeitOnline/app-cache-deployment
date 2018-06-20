@@ -1,0 +1,4 @@
+# Managed by Chef zeit-batou-target::nginx. Do not edit.
+<% for user in node["batou"]["serviceUsers"] %>
+<%=user%> ALL=(root) NOPASSWD: /bin/systemctl reload varnish.service
+<% end %>
