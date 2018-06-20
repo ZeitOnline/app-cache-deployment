@@ -52,3 +52,15 @@ class Varnish(Component):
 
         self.provide('varnish_dir', self.workdir)
 
+
+@platform('debian', Varnish)
+class ReloadVarnish(Component):
+
+    def verify(self):
+        self.parent.assert_no_subcomponent_changes()
+
+    def update(self):
+        self.cmd('sudo /bin/systemctl reload varnish.service')
+
+
+
