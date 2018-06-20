@@ -1,4 +1,4 @@
-from batou.component import Component, Attribute
+from batou.component import Component, Attribute, platform
 from batou.lib.file import Directory, File
 
 class Varnish(Component):
