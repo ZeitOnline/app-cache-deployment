@@ -5,16 +5,16 @@ server s1 {
     rxreq
     expect req.url == "/solr/website/select/fuselfoo"
     expect req.http.Cookie == <undef>
-    txresp -hdr "X-Backend: solr"
+    txresp -hdr "X-Backend: minerva"
 } -start
 
-@ call varnish(['solr'])
-    include "/etc/varnish/vcl_includes/main.vcl";
+@ call varnish(['minerva'])
+    include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 
 client c1 {
     txreq -url "/website-solr/select/fuselfoo" \
         -hdr "Host: app-cache.zeit.de" -hdr "Cookie: foo"
     rxresp
-    expect resp.http.X-Backend == "solr"
+    expect resp.http.X-Backend == "minerva"
 } -run

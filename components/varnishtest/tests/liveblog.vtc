@@ -10,7 +10,7 @@ server s1 {
 } -start
 
 @ call varnish(['liveblog'])
-    include "/etc/varnish/vcl_includes/main.vcl";
+    include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 
 client c1 {

@@ -49,6 +49,10 @@ class Varnish(Component):
             "vcl_includes/synth.vcl",
             source="vcl_includes/synth.vcl",
             is_template="true")
+        self += File(
+            "vcl_includes/test.vcl",
+            source="vcl_includes/test.vcl",
+            is_template="true")
 
         self.provide('varnish_dir', self.workdir)
 

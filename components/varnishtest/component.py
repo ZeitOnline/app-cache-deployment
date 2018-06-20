@@ -11,7 +11,8 @@ BACKENDS = {
     'brandeins',
     'liveblog',
     'liveblog3api',
-    'solr',
+    'athene',
+    'minerva',
     'spektrum',
     'zett'
 }
@@ -23,7 +24,7 @@ class Docker(Component):
         self += File("Dockerfile")
 
     def verify(self):
-        self.assert_no_subcomponent_changes()
+        self.parent.assert_no_subcomponent_changes()
 
     def update(self):
         self.cmd("docker build -t varnish_test_app_cache .")

@@ -13,7 +13,7 @@ server s1 {
 } -start
 
 @ call varnish(['agatho'])
-    include "/etc/varnish/vcl_includes/main.vcl";
+    include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 
 # Get thread from backend
