@@ -57,3 +57,10 @@ class Varnishtest(Component):
                 tpl = env.get_template('preprocess.vtc')
                 tpl = tpl.render(vtc=path)
                 self += File(path, content=tpl)
+
+
+class DummyVarnishtest(Component):
+    """ Only needed for configuration of prod environments,
+        where testing isn't needed."""
+    def configure(self):
+        self.vcldir = self.require_one('varnish_dir')
