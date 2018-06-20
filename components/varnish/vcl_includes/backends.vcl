@@ -84,3 +84,20 @@ backend liveblog3api {
         .initial = 3;
     }
 }
+
+backend liveblog {
+    .host = "app-cache{{component.subdomain}}.zeit.de";
+    .port = "80";
+    .connect_timeout = 10s;
+    .first_byte_timeout = 10s;
+    .between_bytes_timeout = 1s;
+    .host_header = "zeit.superdesk.pro";
+    .probe = {
+        .url = "/resources/LiveDesk/Blog";
+        .timeout = 3s;
+        .interval = 10s;
+        .window = 8;
+        .threshold = 3;
+        .initial = 3;
+    }
+}
