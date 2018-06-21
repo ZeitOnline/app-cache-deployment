@@ -1,7 +1,7 @@
 package "varnish"
 
 execute 'varnish_restart' do
-  command 'systemctl daemon-reload && systemctl restart varnish'
+	command 'systemctl daemon-reload && systemctl restart varnish && sleep 0.5'
   action :nothing
 end
 
@@ -22,7 +22,7 @@ template "/etc/systemd/system/varnish.service.d/varnish.conf" do
   owner "root"
   group "root"
   mode "0644"
-  notifies :run, 'execute[varnish_reload]', :immediately
+  notifies :run, 'execute[varnish_restart]', :immediately
 end
 
 # Link VCL to configured batou location
@@ -34,7 +34,7 @@ end
 varnish_config.each do |config|
   link "/etc/varnish/#{File.basename(config)}" do
     to config
-	only_if { File.exists? config or Directory.exists? config}
+    only_if { File.exists? config or Directory.exists? config}
     notifies :run, "execute[varnish_reload]", :delayed
   end
 end
