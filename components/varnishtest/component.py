@@ -33,11 +33,11 @@ class Docker(Component):
 class Varnishtest(Component):
     def configure(self):
         self.vcldir = self.require_one('varnish_dir')
-        self += Docker()
         self.render_varnishtest_templates()
         self += File('conftest.py')
         self += File("test_varnish_config.py")
         self += File("Makefile", is_template=True)
+        self += Docker()
 
     def render_varnishtest_templates(self):
         def get_backends(prepone=[], exclude=[], postpone=[]):
@@ -54,7 +54,6 @@ class Varnishtest(Component):
         for vtc in next(os.walk('{}/tests'.format(defdir)))[2]:
             if vtc.endswith('vtc'):
                 path = 'tests/{}'.format(vtc)
-                batou.output.annotate(preprocess)
                 tpl = env.get_template('preprocess.vtc')
                 tpl = tpl.render(vtc=path)
                 self += File(path, content=tpl)
