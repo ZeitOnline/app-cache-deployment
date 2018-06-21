@@ -34,7 +34,7 @@ end
 varnish_config.each do |config|
   link "/etc/varnish/#{File.basename(config)}" do
     to config
-    only_if { File.exists? config or Directory.exists? config}
+    only_if { File.exists? config}
     notifies :run, "execute[varnish_reload]", :delayed
   end
 end
