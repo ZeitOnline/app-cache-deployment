@@ -19,7 +19,7 @@ platforms:
         memory: 2048
     <% else %>
     driver:
-      box: developerinlondon/ubuntu_lxc_xenial_x64
+      box: rvanlaar/bionic64-lxc
       provider: lxc
     <% end %>
 
