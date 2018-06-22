@@ -1,7 +1,7 @@
 package "varnish"
 
 execute 'varnish_restart' do
-	command 'systemctl daemon-reload && systemctl restart varnish && sleep 0.5'
+  command 'systemctl daemon-reload && systemctl restart varnish && sleep 3'
   action :nothing
 end
 
