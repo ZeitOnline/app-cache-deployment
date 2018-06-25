@@ -16,10 +16,10 @@ You can use fswatch to run `bin/test` whenever you edit a component file. This r
 
 Run `fswatch -o ./components | xargs -n1 ./bin/test`. Don't  watch the whole app-cache directory, since the work directory might change, which leads to an infinite loop. Took me a couple minutes to figure that one out.)
 
-## ToDo: Cookbooks
+## Cookbooks
 
-The server is bootstrapped with chef. Cookboos is located in `./cookbooks`.
+The chef cookbook to bootstrap a server is located in `./cookbooks`. It basically installs a Varnish 6.0 an makes sure, that the service can be configured with batou. To test this setup locally you have to run `kitchen test`. The default of this test run is lxc. If you want to us VirtualBox you have to run it with `KITCHEN_PROVIDER="virtualbox" kitchen test`
 
-## ToDo: Deployment
+## Deployment
 
 To run a staging or production deployment you habe to check out the staging/production branch, maybe merge the master and run `./batou deploy staging`.
