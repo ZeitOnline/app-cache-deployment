@@ -7,6 +7,12 @@ sub vcl_recv {
         return(synth(405, "Not allowed."));
     }
 
+    ### --- Health check --- ###
+
+    if (req.url == "/cache_health") {
+        return(synth(200, "health check."));
+    }
+
 
     ### --- Purging --- ###
 
