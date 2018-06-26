@@ -1,0 +1,12 @@
+varnishtest "Undefined URL patterns deliver 404"
+
+@ call varnish([])
+    include "/etc/varnish/vcl_includes/test.vcl";
+@ endcall
+
+client c1 {
+    txreq -url "/just-some-url" -hdr "Host: app-cache.zeit.de" \
+        -hdr "Cookie: foo"
+    rxresp
+    expect resp.status == 404
+} -run

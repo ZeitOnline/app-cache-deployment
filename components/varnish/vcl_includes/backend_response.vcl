@@ -7,7 +7,7 @@ sub vcl_backend_response {
 
     set beresp.grace = 1h;
 
-    if (bereq.backend == liveblog3api) {
+    if (bereq.http.host == "zeit-api.liveblog.pro") {
         set beresp.grace = 48h;
     }
 

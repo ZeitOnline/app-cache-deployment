@@ -94,13 +94,7 @@ sub vcl_recv {
     ### --- Useful patterns --- ###
 
     # Remove cookies, where not needed.
-    if (req.backend_hint == liveblog ||
-            req.backend_hint == academics ||
-            req.backend_hint == brandeins ||
-            req.backend_hint == liveblog3api ||
-            req.backend_hint == solr.backend() ||
-            req.backend_hint == spektrum ||
-            req.backend_hint == zett) {
+    if (req.backend_hint != agatho) {
         unset req.http.Cookie;
     }
 }

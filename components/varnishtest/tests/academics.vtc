@@ -9,7 +9,7 @@ server s1 {
     txresp -hdr "X-Backend: academics"
 } -start
 
-@ call varnish(['academics'])
+@ call varnish(['default'])
     include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 
@@ -27,3 +27,4 @@ client c1 -run
 
 varnish v1 -expect cache_miss == 1
 varnish v1 -expect cache_hit == 1
+

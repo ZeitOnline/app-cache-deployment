@@ -9,7 +9,7 @@ server s1 {
     txresp -hdr "X-Backend: spektrum"
 } -start
 
-@ call varnish(['academics'])
+@ call varnish(['default'])
     include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 
