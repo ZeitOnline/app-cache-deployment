@@ -10,7 +10,7 @@ sub vcl_recv {
     ### --- Health check --- ###
 
     if (req.url == "/cache_health") {
-        return(synth(200, "health check."));
+        return(synth(200, "OK"));
     }
 
 
