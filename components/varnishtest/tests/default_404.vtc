@@ -5,7 +5,7 @@ varnishtest "Undefined URL patterns deliver 404"
 @ endcall
 
 client c1 {
-    txreq -url "/just-some-url" -hdr "Host: app-cache.zeit.de" \
+    txreq -url "/just-some-url" -hdr "Host: app-cache.dev.zeit.de" \
         -hdr "Cookie: foo"
     rxresp
     expect resp.status == 404

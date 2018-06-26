@@ -83,10 +83,12 @@ sub vcl_recv {
 
 
     ### --- Exit Strategy --- ###
-    # An infinite loop would be triggered for requests to the default backend with 
-    # an app-cache host header. To prevent it, we respond with a 404.
+    # An infinite loop would be triggered for requests to the default
+    # backend with an app-cache host header. To prevent it, we
+    # respond with a 404.
 
-    if (req.http.host == "app-cache.zeit.de" && req.backend_hint == default) {
+    if (req.http.host == "app-cache{{component.subdomain}}.zeit.de" &&
+            req.backend_hint == default) {
         return(synth(404, "Not found"));
     }
 
