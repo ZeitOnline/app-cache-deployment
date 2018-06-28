@@ -58,4 +58,4 @@ class DummyVarnishtest(Component):
     """ Only needed for configuration of prod environments,
         where testing isn't needed."""
     def configure(self):
-        self.vcldir = self.require_one('varnish_dir')
+        self.vcldir = self.require_one('varnish_dir', self.host)
