@@ -27,7 +27,7 @@ class Docker(Component):
 
 class Varnishtest(Component):
     def configure(self):
-        self.vcldir = self.require_one('varnish_dir')
+        self.vcldir = self.require_one('varnish_dir', self.host)
         self.render_varnishtest_templates()
         self += File('conftest.py')
         self += File("test_varnish_config.py")
