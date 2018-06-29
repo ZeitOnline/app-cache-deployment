@@ -14,7 +14,7 @@ Edit VCL in `components/varnish` and the tests in `components/varnishtest/tests`
 
 You can use fswatch to run `bin/test` whenever you edit a component file. This runs bin/test in the background and Batou rebuilds the files and runs the tests on changes. On macOS you can do `brew install fswatch` (refer to the [fswatch repository](https://github.com/emcrisostomo/fswatch) for different OS).
 
-Run `fswatch -o ./components | xargs -n1 ./bin/test`. Don't  watch the whole app-cache directory, since the work directory might change, which leads to an infinite loop. Took me a couple minutes to figure that one out.)
+Run `fswatch -o ./components | xargs -n1 ./bin/test`. Don't  watch the whole app-cache directory, since the work directory might change, which leads to an infinite loop. Took me a couple minutes to figure that one out.
 
 ## Cookbooks
 
