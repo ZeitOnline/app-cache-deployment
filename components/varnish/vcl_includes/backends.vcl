@@ -8,7 +8,7 @@ backend default {
 }
 
 backend agatho {
-    .host = "community01.zeit.de";
+    .host = "community01{{component.subdomain}}.zeit.de";
     .port = "80";
     .connect_timeout = 10s;
     .first_byte_timeout = 10s;
