@@ -1,7 +1,7 @@
-sub vcl_hit {
-    set resp.http.X-ZON-Cache = "HIT";
-}
-
-sub vcl_miss {
-    set resp.http.X-ZON-Cache = "MISS";
+sub vcl_deliver {
+    if (obj.hits > 0) {
+        set resp.http.X-ZON-Cache = "HIT";
+    } else {
+        set resp.http.X-ZON-Cache = "MISS";
+    }
 }

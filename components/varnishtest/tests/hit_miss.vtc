@@ -1,0 +1,19 @@
+varnishtest "Test X-ZON-Cache headers are set"
+
+@ call varnish([])
+    include "/etc/varnish/vcl_includes/test.vcl";
+@ endcall
+
+# Get foo uncached returns MISS
+client c1 {
+    txreq -url "/foo" -hdr "Host: app-cache.zeit.de"
+    rxresp
+    expect resp.http.X-ZON-Cache == "MISS"
+} -run
+
+# Get foo cached returns HIT
+client c2 {
+    txreq -url "/foo" -hdr "Host: app-cache.zeit.de"
+    rxresp
+    expect resp.http.X-ZON-Cache == "HIT"
+} -run
