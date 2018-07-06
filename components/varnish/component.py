@@ -30,7 +30,7 @@ class Varnish(Component):
             source="vcl_includes/backend_fetch.vcl",
             is_template="true")
         self += File(
-            "vcl_includes/hit_miss.vcl",
+            "vcl_includes/deliver.vcl",
             source="vcl_includes/deliver.vcl",
             is_template="true")
         self += File(
