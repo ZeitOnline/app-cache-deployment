@@ -102,7 +102,6 @@ sub vcl_recv {
     }
 
     if (req.http.x-cache-auth == "true") {
-        return (lookup);
+        return (hash);
     }
-}
 }
