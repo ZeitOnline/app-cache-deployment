@@ -101,7 +101,7 @@ sub vcl_recv {
         unset req.http.Cookie;
     }
 
-    #if (req.http.x-cache-auth == "true") {
-    #    return (hash);
-    #}
+    if (req.http.x-cache-auth == "true") {
+        return (hash);
+    }
 }
