@@ -50,6 +50,10 @@ class Varnish(Component):
             source="vcl_includes/synth.vcl",
             is_template="true")
         self += File(
+            "vcl_includes/hit_miss_pass.vcl",
+            source="vcl_includes/hit_miss_pass.vcl",
+            is_template="true")
+        self += File(
             "vcl_includes/test.vcl",
             source="vcl_includes/test.vcl",
             is_template="true")
