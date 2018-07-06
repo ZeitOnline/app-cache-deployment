@@ -111,3 +111,6 @@ work/
 #chef
 .kitchen/
 report_integration_app-cache.xml
+
+#visual studio code
+.vscode
