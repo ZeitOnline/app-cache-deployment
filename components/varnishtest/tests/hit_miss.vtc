@@ -14,6 +14,19 @@ server s1 {
     expect req.http.host == "zeit-api.liveblog.pro"
     txresp 
 
+    rxreq
+    expect req.url == "/no-cache"
+    txresp -hdr "Cache-Control: no-cache"
+
+    rxreq
+    expect req.url == "/no-cache"
+    txresp -hdr "Cache-Control: no-cache"
+
+    rxreq
+    expect req.url == "/api/blogs/no-cache"
+    expect req.http.host == "zeit-api.liveblog.pro"
+    txresp -hdr "Cache-Control: no-cache"
+
 } -start
 
 @ call varnish(['default'])
@@ -51,6 +64,29 @@ client c4 {
 # Get /liveblog-api-v3/foo with auth_header causes hit on second run
 client c5 {
     txreq -url "/liveblog-api-v3/foo" -hdr "Authorization: auth_me"
+    rxresp
+    expect resp.http.X-ZON-Cache == "HIT"
+} -run
+
+# no-cache cache control won't cache
+client c6 {
+    txreq -url "/no-cache"
+    rxresp
+    expect resp.http.X-ZON-Cache == "MISS"
+} -run
+
+client c6 -run
+
+# Get /liveblog-api-v3/no-cache with auth header causes a miss on first run
+client c7 {
+    txreq -url "/liveblog-api-v3/no-cache" -hdr "Authorization: auth_me"
+    rxresp
+    expect resp.http.X-ZON-Cache == "MISS"
+} -run
+
+# But a hit on second run
+client c8 {
+    txreq -url "/liveblog-api-v3/no-cache" -hdr "Authorization: auth_me"
     rxresp
     expect resp.http.X-ZON-Cache == "HIT"
 } -run
