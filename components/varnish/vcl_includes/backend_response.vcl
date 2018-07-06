@@ -5,9 +5,13 @@ sub vcl_backend_response {
         set beresp.ttl = 30s;
     }
 
+    if (bereq.http.x-ignore-cache-control == "true") {
+        unset beresp.http.Cache-Control;
+    }
+
     set beresp.grace = 1h;
 
-    if (bereq.http.host == "zeit-api.liveblog.pro") {
+    if (bereq.http.x-long-term-grace == "true") {
         set beresp.grace = 48h;
     }
 
