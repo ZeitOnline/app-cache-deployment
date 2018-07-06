@@ -58,6 +58,7 @@ sub vcl_recv {
     if (req.url ~ "^/liveblog-api-v3/") {
         set req.url = regsub(req.url, "^/liveblog-api-v3/", "/api/blogs/");
         set req.http.host = "zeit-api.liveblog.pro";
+        set req.http.x-cache-auth = "true";
     }
 
     # liveblog legacy version	
@@ -99,4 +100,9 @@ sub vcl_recv {
     if (req.backend_hint != agatho) {
         unset req.http.Cookie;
     }
+
+    if (req.http.x-cache-auth == "true") {
+        return (lookup);
+    }
+}
 }

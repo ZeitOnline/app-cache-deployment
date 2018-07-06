@@ -1,19 +1,56 @@
 varnishtest "Test X-ZON-Cache headers are set"
 
-@ call varnish([])
+server s1 {
+    rxreq
+    expect req.url == "/foo"
+    txresp 
+
+    rxreq
+    expect req.url == "/baa"
+    txresp 
+
+    rxreq
+    expect req.url == "/api/blogs/foo"
+    expect req.http.host == "zeit-api.liveblog.pro"
+    txresp 
+
+} -start
+
+@ call varnish(['default'])
     include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 
 # Get foo uncached returns MISS
 client c1 {
-    txreq -url "/foo" -hdr "Host: app-cache.zeit.de"
+    txreq -url "/foo" -hdr "Host: internal-lb.zeit.de"
     rxresp
     expect resp.http.X-ZON-Cache == "MISS"
 } -run
 
 # Get foo cached returns HIT
 client c2 {
-    txreq -url "/foo" -hdr "Host: app-cache.zeit.de"
+    txreq -url "/foo" -hdr "Host: internal-lb.zeit.de"
+    rxresp
+    expect resp.http.X-ZON-Cache == "HIT"
+} -run
+
+# Get foo with auth header causes a pass
+client c3 {
+    txreq -url "/baa" -hdr "Host: internal-lb.zeit.de" -hdr "Authorization: auth_me"
+    rxresp
+    expect resp.http.X-ZON-Cache == "PASS"
+} -run
+
+# Get /liveblog-api-v3/foo with auth header causes a miss on first run
+client c4 {
+    txreq -url "/liveblog-api-v3/foo" -hdr "Authorization: auth_me"
+    rxresp
+    expect resp.http.X-ZON-Cache == "MISS"
+} -run
+
+# Get /liveblog-api-v3/foo with auth_header causes hit on second run
+client c5 {
+    txreq -url "/liveblog-api-v3/foo" -hdr "Authorization: auth_me"
     rxresp
     expect resp.http.X-ZON-Cache == "HIT"
 } -run
