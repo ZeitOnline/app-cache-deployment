@@ -63,7 +63,7 @@ sub vcl_recv {
         set req.http.x-long-term-grace = "true";
     }
 
-    # liveblog legacy version	
+    # liveblog legacy version
     if (req.url ~ "^/liveblog-status/") {
         set req.url = regsub(
             req.url, "^/liveblog-status/", "/resources/LiveDesk/");
@@ -75,7 +75,7 @@ sub vcl_recv {
     # -- community --
     if (req.url ~ "^/agatho/") {
         set req.backend_hint = agatho;
-        set req.http.host = "community01{{component.subdomain}}.zeit.de";
+        set req.http.host = "community-app{{component.subdomain}}.zeit.de";
     }
 
     # -- search --
