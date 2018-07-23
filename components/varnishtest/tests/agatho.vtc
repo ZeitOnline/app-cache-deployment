@@ -4,7 +4,7 @@ varnishtest "Content from agatho is delivered and cached"
 server s1 {
     rxreq
     expect req.url == "/agatho/thread/abc"
-    expect req.http.host == "community01.dev.zeit.de"
+    expect req.http.host == "community-app.dev.zeit.de"
     txresp -hdr "X-Backend: agatho"
 } -start
 
