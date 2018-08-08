@@ -33,21 +33,29 @@ sub vcl_recv {
     if (req.url == "/academics-hp-feed") {
         set req.http.host = "jobs.zeit.de";
         set req.url = "/cached-rss-feeds/adpanel_333644.html";
+        set req.http.x-ignore-cache-control = "true";
+        set req.http.x-long-term-grace = "true";
     }
 
     if (req.url == "/brandeins-hp-feed") {
         set req.http.host = "www.brandeins.de";
         set req.url = "/zeit-feed.rss";
+        set req.http.x-ignore-cache-control = "true";
+        set req.http.x-long-term-grace = "true";
     }
 
     if (req.url == "/spektrum-hp-feed") {
         set req.http.host = "www.spektrum.de";
         set req.url = "/alias/rss/zeit-kooperationsfeed-mit-kategorien/1342995";
+        set req.http.x-ignore-cache-control = "true";
+        set req.http.x-long-term-grace = "true";
     }
 
     if (req.url == "/zett-hp-feed") {
         set req.http.host = "ze.tt";
         set req.url = "/feed-zon";
+        set req.http.x-ignore-cache-control = "true";
+        set req.http.x-long-term-grace = "true";
     }
 
     # -- liveblog --
