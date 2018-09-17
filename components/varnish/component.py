@@ -1,5 +1,6 @@
-from batou.component import Component, Attribute, platform
+from batou.component import Component, platform
 from batou.lib.file import Directory, File
+
 
 class Varnish(Component):
 
@@ -14,7 +15,7 @@ class Varnish(Component):
         self += Directory('vcl_includes')
 
         self += File(
-             "vcl_includes/acl.vcl",
+            "vcl_includes/acl.vcl",
             source="vcl_includes/acl.vcl",
             is_template="true")
         self += File(
@@ -32,10 +33,6 @@ class Varnish(Component):
         self += File(
             "vcl_includes/deliver.vcl",
             source="vcl_includes/deliver.vcl",
-            is_template="true")
-        self += File(
-            "vcl_includes/init.vcl",
-            source="vcl_includes/init.vcl",
             is_template="true")
         self += File(
             "vcl_includes/main.vcl",
