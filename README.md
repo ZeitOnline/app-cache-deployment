@@ -18,7 +18,7 @@ Run `fswatch -o ./components | xargs -n1 ./bin/test`. Don't  watch the whole app
 
 ## Cookbooks
 
-The chef cookbook to bootstrap a server is located in `./cookbooks`. It basically installs a Varnish 6.0 an makes sure, that the service can be configured with batou. To test this setup locally you have to run `kitchen test`. The default of this test run is lxc. If you want to us VirtualBox you have to run it with `KITCHEN_PROVIDER="virtualbox" kitchen test`
+The chef cookbook to bootstrap a server is located in `./cookbooks`. It basically installs a Varnish (from distribution) and makes sure, that the service can be configured with batou. To test this setup locally you have to run `kitchen test`. The default of this test run is lxc. If you want to us VirtualBox you have to run it with `KITCHEN_PROVIDER="virtualbox" kitchen test`
 
 ## Deployment
 
