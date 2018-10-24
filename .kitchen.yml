@@ -32,8 +32,9 @@ verifier:
 
 suites:
   - name: app-cache
-    provisioner:
-      policyfile_path: policyfiles/app-cache.rb
+    run_list:
+      - recipe[zeit-app-cache::testing]
+      - recipe[zeit-app-cache::varnish]
     attributes:
       batou:
         serviceUsers: ['app-cache']
