@@ -23,3 +23,12 @@ control "vcl config is deployed" do
       its('content') { should match(%r{app-cache.*NOPASSWD.*varnish.service}) }
   end
 end
+
+
+control "vcl is applied" do
+  describe http("http://localhost:8080/cache_health",
+                enable_remote_worker: true) do
+    its("status") { should cmp 200 }
+    its("body") { should include "OK" }
+  end
+end
