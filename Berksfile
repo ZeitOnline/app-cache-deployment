@@ -19,3 +19,4 @@ end
 
 
 local_cookbook "zeit-app-cache"
+  zon_cookbook "zeit-batou-target"

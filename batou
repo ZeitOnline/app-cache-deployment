@@ -15,7 +15,7 @@ import subprocess
 # download and copy this file to bootstrap a new batou installation.
 BOOTSTRAP_VERSION_MARKER = '{' + '{version}' + '}'
 
-version = os.environ.get('BATOU_VERSION', '1.7.5')
+version = os.environ.get('BATOU_VERSION', '1.7.6.dev0-kitchen.7')
 develop = os.environ.get('BATOU_DEVELOP', '')
 
 
@@ -93,7 +93,7 @@ def prepare():
         else:
             spec = 'batou=={}'.format(version)
 
-        cmd('.batou/bin/pip install --ignore-installed {}'.format(spec))
+        cmd('.batou/bin/pip install --index=http://devpi.zeit.de:4040/zeit/default/+simple --trusted-host=devpi.zeit.de --ignore-installed {}'.format(spec))
 
 
 if '--fast' not in sys.argv and '-F' not in sys.argv:

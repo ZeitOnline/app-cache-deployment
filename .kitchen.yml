@@ -2,12 +2,16 @@
 driver:
   name: vagrant
   forward_agent: true
+  box_check_update: false
+
+# Work around <https://github.com/test-kitchen/test-kitchen
+#  /issues/1035#issuecomment-283189967>
+transport:
+  max_ssh_sessions: 5
 
 provisioner:
   name: chef_zero
-  product_name: chef
-  product_version: 12
-
+  require_chef_omnibus: 13
 
 platforms:
   - name: ubuntu-18.04
@@ -31,9 +35,9 @@ verifier:
   <% end %>
 
 suites:
-  - name: app-cache
+  - name: batou-app-cache
     run_list:
-      - recipe[zeit-app-cache::testing]
+      - recipe[zeit-batou-target]
       - recipe[zeit-app-cache::varnish]
     attributes:
       batou:
