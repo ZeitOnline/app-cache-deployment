@@ -10,6 +10,13 @@ control "varnish package is installed" do
 end
 
 
+control "varnish parameters can be configured" do
+  describe processes('varnishd') do
+    its('commands') { should include a_string_matching("-s malloc,256M") }
+  end
+end
+
+
 control "vcl config is deployed" do
   describe file('/etc/varnish/default.vcl') do
     its('link_path') { should eq '/srv/app-cache/deployment/work/varnish/default.vcl' }
