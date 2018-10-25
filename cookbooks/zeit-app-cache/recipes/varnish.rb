@@ -1,4 +1,7 @@
-package "varnish"
+package "varnish" do
+  # Prevent unwanted updates (which might trigger an uncontrolled restart)
+  version node["varnish"]["package-version"]
+end
 
 execute 'varnish_restart' do
   command 'systemctl daemon-reload && systemctl restart varnish && sleep 3'
