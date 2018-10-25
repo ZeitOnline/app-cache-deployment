@@ -29,7 +29,7 @@ class Varnishtest(Component):
         self.render_varnishtest_templates()
         self += File('conftest.py')
         self += File("test_varnish_config.py")
-        self += File("Makefile", is_template=True)
+        self += File("run.sh", mode=0o755)
         self += Docker()
 
     def render_varnishtest_templates(self):
