@@ -1,3 +1,3 @@
 #!/bin/sh
 ./batou deploy local
-cd work/varnishtest && exec make test "$@"
+cd work/varnishtest && exec ./run.sh "$@"

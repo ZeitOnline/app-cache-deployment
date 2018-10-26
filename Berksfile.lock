@@ -1,0 +1,16 @@
+DEPENDENCIES
+  zeit-app-cache
+    path: cookbooks/zeit-app-cache
+  zeit-batou-target
+    git: git@github.com:ZeitOnline/chef
+    revision: 888f67a5d96228bdda9d4134b5a0b24383001e8a
+    ref: 888f67a
+    rel: cookbooks/zeit-batou-target
+
+GRAPH
+  apt (6.1.4)
+  zeit-app-cache (1.0.0)
+    apt (= 6.1.4)
+    zeit-batou-target (= 1.4.0)
+  zeit-batou-target (1.4.0)
+    apt (>= 0.0.0)

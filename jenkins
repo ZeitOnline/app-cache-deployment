@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -x
+set +e
+
+echo "Building documentation"
+make -C docs
+
+echo "Running VCL tests"
+set -e
+./batou deploy local
+set +e
+
+cd ${WORKSPACE}/work/varnishtest
+rm -f report.xml
+./run.sh -v -p no:sugar --junitxml=report.xml
+TEST_RESULT=$?
+
+set -e
+echo "Running integration tests"
+cd ${WORKSPACE}
+KITCHEN_PROVIDER=lxc KITCHEN_FORMAT=junit make integration
+
+exit $TEST_RESULT

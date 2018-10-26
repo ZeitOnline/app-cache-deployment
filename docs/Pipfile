@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sphinx = "*"
+sphinx-autobuild = "*"
+sphinx-zon-theme = "*"
+# python3.4 on buildbert needs this
+typing = "*"
+pip = "==18.0"
+
+[dev-packages]
+
+[scripts]
+build = "sphinx-build . htdocs"
+serve = "sphinx-autobuild . htdocs"
+
+[requires]
+python_version = "3"
