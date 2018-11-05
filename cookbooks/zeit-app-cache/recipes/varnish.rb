@@ -49,3 +49,10 @@ template "/etc/sudoers.d/batou-varnish" do
   only_if { Dir.exists? "/etc/sudoers.d" }
 end
 
+
+if not node["varnish"]["enable_ncsa_service"]
+  # Started by default by the varnish debian package
+  service "varnishncsa" do
+    action [:stop, :disable]
+  end
+end
