@@ -16,4 +16,4 @@ Documentation=https://doc.example.com/client_a/varnish_service
 # Clear existing ExecStart= (required)
 ExecStart=
 # Set a new ExecStart=
-ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :8080 -T localhost:6082 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,<%=node["varnish"]["storage-size"]%> -p send_timeout=<%=node["varnish"]["send-timeout"]%>
+ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :<%=node["varnish"]["port"]%> -T localhost:6082 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,<%=node["varnish"]["storage-size"]%> -p send_timeout=<%=node["varnish"]["send-timeout"]%>
