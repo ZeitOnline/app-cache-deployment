@@ -15,6 +15,7 @@ class Docker(Component):
 
     def configure(self):
         self += File("Dockerfile")
+        self += File(".dockerignore")
 
     def verify(self):
         self.parent.assert_no_subcomponent_changes()
