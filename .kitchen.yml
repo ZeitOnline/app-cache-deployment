@@ -3,10 +3,6 @@ driver:
   name: vagrant
   forward_agent: true
   box_check_update: false
-  # wosc
-  vagrantfiles:
-    - /home/wosc/install/vagrant-provision-caches.rb
-  provision: true
 
 # Work around <https://github.com/test-kitchen/test-kitchen
 #  /issues/1035#issuecomment-283189967>
