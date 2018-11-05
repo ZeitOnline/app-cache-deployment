@@ -12,5 +12,5 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 chef_version     '>= 12'
 supports         'ubuntu', '>= 18.04'
 
-depends          'apt', '=6.1.4'
-depends          'zeit-batou-target', '=1.4.0'
+depends          'apt', '=7.1.1'
+depends          'zeit-batou-target', '=1.4.1'
