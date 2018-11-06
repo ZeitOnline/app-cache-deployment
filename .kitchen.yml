@@ -18,7 +18,7 @@ platforms:
     <% if ENV["KITCHEN_PROVIDER"] == "virtualbox" %>
     driver:
       provider: virtualbox
-      box: bento/ubuntu-16.04
+      box: bento/ubuntu-18.04
       customize:
         memory: 2048
     <% else %>
