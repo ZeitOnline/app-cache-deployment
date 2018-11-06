@@ -23,7 +23,7 @@ platforms:
         memory: 2048
     <% else %>
     driver:
-      box: rvanlaar/bionic64-lxc
+      box: emptybox/ubuntu-bionic-amd64-lxc
       provider: lxc
     <% end %>
 
