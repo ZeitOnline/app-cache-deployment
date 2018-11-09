@@ -12,7 +12,7 @@ end
 
 control "varnish parameters can be configured" do
   describe processes('varnishd') do
-    its('commands') { should include a_string_matching("-s malloc,256M") }
+    its('commands') { should include a_string_matching("-s malloc,32M") }
   end
 end
 

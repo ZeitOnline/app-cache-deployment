@@ -37,11 +37,7 @@ verifier:
 suites:
   - name: batou-app-cache
     run_list:
-      - recipe[zeit-batou-target]
-      - recipe[zeit-app-cache::varnish]
+      - recipe[zeit-app-cache]
     attributes:
-      batou:
-        serviceUsers: ['app-cache']
-        varnish_config:
-          - "/srv/app-cache/deployment/work/varnish/default.vcl"
-          - "/srv/app-cache/deployment/work/varnish/vcl_includes"
+      varnish:
+        storage-size: 32M
