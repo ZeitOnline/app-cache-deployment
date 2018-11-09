@@ -23,7 +23,7 @@ platforms:
         memory: 2048
     <% else %>
     driver:
-      box: emptybox/ubuntu-bionic-amd64-lxc
+      box: zeitonline/bionic64-lxc
       provider: lxc
     <% end %>
 
