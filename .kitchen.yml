@@ -1,8 +1,6 @@
 ---
 driver:
   name: vagrant
-  forward_agent: true
-  box_check_update: false
 
 # Work around <https://github.com/test-kitchen/test-kitchen
 #  /issues/1035#issuecomment-283189967>
