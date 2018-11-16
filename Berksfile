@@ -24,3 +24,7 @@ local_cookbook "zeit-app-cache"
   zon_cookbook "zeit-zabbix"
     zon_cookbook "influxdb"  # patched locally
 
+zon_cookbook "zeit-baseserver"
+  zon_cookbook "zeit-online"
+  zon_cookbook "zeit-patch"
+  # zeit-zabbix already required above

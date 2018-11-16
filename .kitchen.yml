@@ -37,6 +37,8 @@ verifier:
 suites:
   - name: batou-app-cache
     run_list:
+      - recipe[zeit-baseserver::kitchen]
+      - recipe[zeit-baseserver]
       - recipe[zeit-app-cache]
     attributes:
       varnish:
