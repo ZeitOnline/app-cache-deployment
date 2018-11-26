@@ -1,9 +1,5 @@
 name             'zeit-app-cache'
-<<<<<<< Updated upstream
-version          '1.1.0'
-=======
 version          '1.2.0'
->>>>>>> Stashed changes
 
 maintainer       'ZEIT ONLINE GmbH'
 maintainer_email 'zon-backend@zeit.de'
