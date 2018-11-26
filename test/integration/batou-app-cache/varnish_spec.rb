@@ -4,15 +4,15 @@ control "varnish package is installed" do
   end
 
   describe processes('varnishd') do
-    its('list.length') { should eq 2 }
-    its('commands') { should include a_string_matching("-a :8080") }
+    its('entries.length') { should eq 2 }
+	its('commands') { should include a_string_matching("-a 0.0.0.0:8080") }
   end
 end
 
 
 control "varnish parameters can be configured" do
   describe processes('varnishd') do
-    its('commands') { should include a_string_matching("-s malloc,256M") }
+    its('commands') { should include a_string_matching("-s malloc,32M") }
   end
 end
 

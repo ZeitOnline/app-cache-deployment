@@ -1,8 +1,6 @@
 ---
 driver:
   name: vagrant
-  forward_agent: true
-  box_check_update: false
 
 # Work around <https://github.com/test-kitchen/test-kitchen
 #  /issues/1035#issuecomment-283189967>
@@ -23,7 +21,7 @@ platforms:
         memory: 2048
     <% else %>
     driver:
-      box: emptybox/ubuntu-bionic-amd64-lxc
+      box: zeitonline/bionic64-lxc
       provider: lxc
     <% end %>
 
@@ -37,11 +35,9 @@ verifier:
 suites:
   - name: batou-app-cache
     run_list:
-      - recipe[zeit-batou-target]
-      - recipe[zeit-app-cache::varnish]
+      - recipe[zeit-baseserver::kitchen]
+      - recipe[zeit-baseserver]
+      - recipe[zeit-app-cache]
     attributes:
-      batou:
-        serviceUsers: ['app-cache']
-        varnish_config:
-          - "/srv/app-cache/deployment/work/varnish/default.vcl"
-          - "/srv/app-cache/deployment/work/varnish/vcl_includes"
+      varnish:
+        storage-size: 32M
