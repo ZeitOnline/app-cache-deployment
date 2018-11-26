@@ -1,6 +1,6 @@
 apt_repository "varnish" do
   uri "https://packagecloud.io/varnishcache/varnish60lts/ubuntu/"
-  distribution "trusty"
+  distribution "bionic"
   components ["main"]
   key 'https://packagecloud.io/varnishcache/varnish60lts/gpgkey'
 end
