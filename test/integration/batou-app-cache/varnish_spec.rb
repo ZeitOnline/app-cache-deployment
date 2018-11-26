@@ -5,7 +5,7 @@ control "varnish package is installed" do
 
   describe processes('varnishd') do
     its('entries.length') { should eq 2 }
-    its('commands') { should include a_string_matching("-a :8080") }
+	its('commands') { should include a_string_matching("-a 0.0.0.0:8080") }
   end
 end
 
