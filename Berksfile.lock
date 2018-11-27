@@ -145,7 +145,7 @@ GRAPH
     poise-python (= 1.5.1)
     rabbitmq (= 5.3.1)
     seven_zip (= 2.0.2)
-    ssh-keys (= 1.0)
+    ssh-keys (= 1.0.0)
     ssh_authorized_keys (= 0.4.0)
     sysctl (= 0.8.0)
     windows (= 2.0.2)
