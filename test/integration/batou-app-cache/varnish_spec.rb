@@ -1,6 +1,7 @@
 control "varnish package is installed" do
   describe package('varnish') do
     it { should be_installed }
+    its("version") { should match /^6/}
   end
 
   describe processes('varnishd') do
