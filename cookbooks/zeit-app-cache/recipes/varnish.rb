@@ -1,6 +1,13 @@
+apt_repository "varnish" do
+  uri "https://packagecloud.io/varnishcache/varnish60lts/ubuntu/"
+  distribution node["lsb"]["codename"]
+  components ["main"]
+  key 'https://packagecloud.io/varnishcache/varnish60lts/gpgkey'
+end
+
 package "varnish" do
-  # Prevent unwanted updates (which might trigger an uncontrolled restart)
-  version node["varnish"]["package-version"]
+  # lock prevents unwanted updates, which might trigger an uncontrolled restart
+  action [:install, :lock]
 end
 
 execute 'varnish_restart' do
