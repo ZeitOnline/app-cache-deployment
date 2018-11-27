@@ -6,8 +6,8 @@ apt_repository "varnish" do
 end
 
 package "varnish" do
-  # Prevent unwanted updates (which might trigger an uncontrolled restart)
-  version node["varnish"]["package-version"]
+  # lock prevents unwanted updates, which might trigger an uncontrolled restart
+  action [:install, :lock]
 end
 
 execute 'varnish_restart' do
