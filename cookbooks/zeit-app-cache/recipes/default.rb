@@ -1,5 +1,7 @@
 node.default["memcached"]["memory"] = 512
 node.default["memcached"]["maxconn"] = 2048
+# Having to specify this twice is rather poor API design.
+node.default["memcached"]["ulimit"] = node.default["memcached"]["maxconn"]
 node.default["memcached"]["user"] = "memcache"
 
 node.default["batou"]["serviceUsers"] = ["app-cache"]
