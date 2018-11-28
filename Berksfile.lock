@@ -1,40 +1,40 @@
 DEPENDENCIES
   influxdb
     git: git@github.com:ZeitOnline/chef
-    revision: e5a08158f7b962fa33ac5b5bfd21c1e5c56c5c1a
-    ref: e5a0815
+    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
+    ref: 3b96a2f
     rel: cookbooks/influxdb
   zeit-app-cache
     path: cookbooks/zeit-app-cache
   zeit-baseserver
     git: git@github.com:ZeitOnline/chef
-    revision: e5a08158f7b962fa33ac5b5bfd21c1e5c56c5c1a
-    ref: e5a0815
+    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
+    ref: 3b96a2f
     rel: cookbooks/zeit-baseserver
   zeit-batou-target
     git: git@github.com:ZeitOnline/chef
-    revision: e5a08158f7b962fa33ac5b5bfd21c1e5c56c5c1a
-    ref: e5a0815
+    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
+    ref: 3b96a2f
     rel: cookbooks/zeit-batou-target
   zeit-metrics
     git: git@github.com:ZeitOnline/chef
-    revision: e5a08158f7b962fa33ac5b5bfd21c1e5c56c5c1a
-    ref: e5a0815
+    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
+    ref: 3b96a2f
     rel: cookbooks/zeit-metrics
   zeit-online
     git: git@github.com:ZeitOnline/chef
-    revision: e5a08158f7b962fa33ac5b5bfd21c1e5c56c5c1a
-    ref: e5a0815
+    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
+    ref: 3b96a2f
     rel: cookbooks/zeit-online
   zeit-patch
     git: git@github.com:ZeitOnline/chef
-    revision: e5a08158f7b962fa33ac5b5bfd21c1e5c56c5c1a
-    ref: e5a0815
+    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
+    ref: 3b96a2f
     rel: cookbooks/zeit-patch
   zeit-zabbix
     git: git@github.com:ZeitOnline/chef
-    revision: e5a08158f7b962fa33ac5b5bfd21c1e5c56c5c1a
-    ref: e5a0815
+    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
+    ref: 3b96a2f
     rel: cookbooks/zeit-zabbix
 
 GRAPH
@@ -61,7 +61,7 @@ GRAPH
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
     yum-erlang_solutions (>= 0.0.0)
-  grafana (3.0.0)
+  grafana (3.0.1)
     nginx (>= 7.0)
   influxdb (2.4.999)
     chef_handler (>= 0.0.0)
@@ -89,7 +89,7 @@ GRAPH
   poise-languages (2.0.3)
     poise (~> 2.5)
     poise-archive (~> 1.0)
-  poise-python (1.5.1)
+  poise-python (1.7.0)
     poise (~> 2.7)
     poise-languages (~> 2.0)
   rabbitmq (5.3.1)
@@ -120,10 +120,10 @@ GRAPH
     runit (= 4.3.0)
     xinetd (= 1.0.1)
     yum-epel (>= 0.0.0)
-    zeit-batou-target (= 1.5.1)
-    zeit-metrics (= 0.0.32)
+    zeit-batou-target (= 1.5.2)
+    zeit-metrics (= 0.0.33)
     zeit-zabbix (>= 0.0.0)
-  zeit-baseserver (1.1.0)
+  zeit-baseserver (1.1.3)
     apt (= 6.1.4)
     ark (= 2.0.2)
     build-essential (= 8.1.1)
@@ -142,7 +142,7 @@ GRAPH
     poise (= 2.8.1)
     poise-archive (= 1.3.0)
     poise-languages (= 2.0.3)
-    poise-python (= 1.5.1)
+    poise-python (= 1.7.0)
     rabbitmq (= 5.3.1)
     seven_zip (= 2.0.2)
     ssh-keys (= 1.0.0)
@@ -154,11 +154,11 @@ GRAPH
     yum-erlang_solutions (= 0.2.0)
     zeit-online (= 0.7.7)
     zeit-patch (= 1.0.7)
-    zeit-zabbix (= 1.1.13)
-  zeit-batou-target (1.5.1)
-  zeit-metrics (0.0.32)
+    zeit-zabbix (= 1.1.15)
+  zeit-batou-target (1.5.2)
+  zeit-metrics (0.0.33)
     grafana (>= 0.0.0)
-    influxdb (>= 0.0.0)
+    influxdb (= 2.4.999)
     nodejs (>= 0.0.0)
     poise-python (>= 0.0.0)
     xinetd (>= 0.0.0)
@@ -169,7 +169,7 @@ GRAPH
     ssh_authorized_keys (>= 0.0.0)
     sysctl (>= 0.0.0)
   zeit-patch (1.0.7)
-  zeit-zabbix (1.1.13)
+  zeit-zabbix (1.1.15)
     chef_handler (>= 0.0.0)
     influxdb (>= 0.0.0)
     rabbitmq (>= 0.0.0)

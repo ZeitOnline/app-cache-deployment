@@ -12,8 +12,8 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 chef_version     '>= 13'
 supports         'ubuntu', '>= 18.04'
 
-depends 'zeit-batou-target', '=1.5.1'
-depends 'zeit-metrics', '=0.0.32'
+depends 'zeit-batou-target', '=1.5.2'
+depends 'zeit-metrics', '=0.0.33'
   depends 'xinetd', '=1.0.1'
 depends 'memcached', '=5.1.1'
   depends 'runit', '=4.3.0'
