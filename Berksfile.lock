@@ -1,40 +1,40 @@
 DEPENDENCIES
   influxdb
     git: git@github.com:ZeitOnline/chef
-    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
-    ref: 3b96a2f
+    revision: 7396bbf6161fdce3f16315cfafabd9bc555665f6
+    ref: 7396bbf
     rel: cookbooks/influxdb
   zeit-app-cache
     path: cookbooks/zeit-app-cache
   zeit-baseserver
     git: git@github.com:ZeitOnline/chef
-    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
-    ref: 3b96a2f
+    revision: 7396bbf6161fdce3f16315cfafabd9bc555665f6
+    ref: 7396bbf
     rel: cookbooks/zeit-baseserver
   zeit-batou-target
     git: git@github.com:ZeitOnline/chef
-    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
-    ref: 3b96a2f
+    revision: 7396bbf6161fdce3f16315cfafabd9bc555665f6
+    ref: 7396bbf
     rel: cookbooks/zeit-batou-target
   zeit-metrics
     git: git@github.com:ZeitOnline/chef
-    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
-    ref: 3b96a2f
+    revision: 7396bbf6161fdce3f16315cfafabd9bc555665f6
+    ref: 7396bbf
     rel: cookbooks/zeit-metrics
   zeit-online
     git: git@github.com:ZeitOnline/chef
-    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
-    ref: 3b96a2f
+    revision: 7396bbf6161fdce3f16315cfafabd9bc555665f6
+    ref: 7396bbf
     rel: cookbooks/zeit-online
   zeit-patch
     git: git@github.com:ZeitOnline/chef
-    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
-    ref: 3b96a2f
+    revision: 7396bbf6161fdce3f16315cfafabd9bc555665f6
+    ref: 7396bbf
     rel: cookbooks/zeit-patch
   zeit-zabbix
     git: git@github.com:ZeitOnline/chef
-    revision: 3b96a2f8384cc93e2364017a3e713def584c56ac
-    ref: 3b96a2f
+    revision: 7396bbf6161fdce3f16315cfafabd9bc555665f6
+    ref: 7396bbf
     rel: cookbooks/zeit-zabbix
 
 GRAPH
@@ -61,7 +61,7 @@ GRAPH
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
     yum-erlang_solutions (>= 0.0.0)
-  grafana (3.0.1)
+  grafana (3.0.0)
     nginx (>= 7.0)
   influxdb (2.4.999)
     chef_handler (>= 0.0.0)
@@ -114,15 +114,15 @@ GRAPH
     yum (~> 3.0)
   yum-erlang_solutions (0.2.0)
     yum (~> 3.0)
-  zeit-app-cache (1.2.1)
+  zeit-app-cache (1.3.0)
     memcached (= 5.1.1)
     packagecloud (= 1.0.1)
     runit (= 4.3.0)
     yum-epel (>= 0.0.0)
-    zeit-batou-target (= 1.5.2)
+    zeit-batou-target (= 1.6.0)
     zeit-metrics (>= 0.0.0)
     zeit-zabbix (>= 0.0.0)
-  zeit-baseserver (1.1.3)
+  zeit-baseserver (1.1.7)
     apt (= 6.1.4)
     ark (= 2.0.2)
     build-essential (= 8.1.1)
@@ -151,24 +151,24 @@ GRAPH
     yum (= 3.8.1)
     yum-epel (= 0.3.6)
     yum-erlang_solutions (= 0.2.0)
-    zeit-online (= 0.7.7)
+    zeit-online (= 0.7.12)
     zeit-patch (= 1.0.7)
-    zeit-zabbix (= 1.1.15)
-  zeit-batou-target (1.5.2)
-  zeit-metrics (0.0.33)
-    grafana (>= 0.0.0)
+    zeit-zabbix (= 1.1.16)
+  zeit-batou-target (1.6.0)
+  zeit-metrics (1.0.0)
+    grafana (= 3.0.0)
     influxdb (= 2.4.999)
     nodejs (>= 0.0.0)
     poise-python (>= 0.0.0)
-    xinetd (>= 0.0.0)
-  zeit-online (0.7.7)
+    xinetd (= 1.0.2)
+  zeit-online (0.7.12)
     chef-sugar (>= 0.0.0)
     nodejs (>= 0.0.0)
     ntp (>= 0.0.0)
     ssh_authorized_keys (>= 0.0.0)
     sysctl (>= 0.0.0)
   zeit-patch (1.0.7)
-  zeit-zabbix (1.1.15)
+  zeit-zabbix (1.1.16)
     chef_handler (>= 0.0.0)
     influxdb (>= 0.0.0)
     rabbitmq (>= 0.0.0)
