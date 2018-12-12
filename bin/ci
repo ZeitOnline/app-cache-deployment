@@ -5,13 +5,20 @@ set -xe
 COMMAND=${1:-test-app}
 case $COMMAND in
     test-app)
-        # @@ customize for CI, e.g. use junit XML output, etc.pp.
-        bin/test
+        ./batou deploy local
+
+        cd ${WORKSPACE}/work/varnishtest
+        rm -f report.xml
+        ./run.sh -v -p no:sugar --junitxml=report.xml
+    ;;
+    test-integration)
+        cd ${WORKSPACE}
+        KITCHEN_PROVIDER=lxc KITCHEN_FORMAT=junit bin/test integration
     ;;
     docs)
         bin/docs html
         bin/docs elasticsearch
-        ln -sfT ${WORKSPACE}/doc/docs.zeit.de.conf $HOME/nginx.d/app-cache.conf
+        ln -sfT ${WORKSPACE}/docs/docs.zeit.de.conf $HOME/nginx.d/app-cache.conf
         sudo /etc/init.d/nginx reload
         exit 0
     ;;
