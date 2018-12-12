@@ -1,18 +1,17 @@
 #!/bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR/..
+
 set -xe
 
 COMMAND=${1:-test-app}
 case $COMMAND in
     test-app)
-        ./batou deploy local
-
-        cd ${WORKSPACE}/work/varnishtest
-        rm -f report.xml
-        ./run.sh -v -p no:sugar --junitxml=report.xml
+        rm -f work/varnishtest/report.xml
+        bin/test -v -p no:sugar --junitxml=report.xml
     ;;
     test-integration)
-        cd ${WORKSPACE}
         KITCHEN_PROVIDER=lxc KITCHEN_FORMAT=junit bin/test integration
     ;;
     docs)

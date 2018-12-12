@@ -1,3 +1,22 @@
-#!/bin/sh
-./batou deploy local
-cd work/varnishtest && exec ./run.sh "$@"
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+case $COMMAND in
+    foodcritic)
+        cd $DIR/../cookbooks
+        foodcritic --context -t ~FC078 -t ~FC048 *
+    ;;
+    integration)
+        cd $DIR/..
+        kitchen destroy batou
+        kitchen converge batou
+        ./batou deploy kitchen
+        kitchen converge batou
+        kitchen verify batou
+    ;;
+    *)
+        ./batou deploy local
+        cd $DIR/../work/varnishtest && exec ./run.sh "$@"
+    ;;
+esac
