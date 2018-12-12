@@ -62,6 +62,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
+docs/.pipenv.success
 docs/htdocs/
 
 # PyBuilder

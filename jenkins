@@ -1,13 +1,8 @@
 #!/bin/bash
 
-set -x
-set +e
-
-echo "Building documentation"
-make -C docs
+set -xe
 
 echo "Running VCL tests"
-set -e
 ./batou deploy local
 set +e
 
