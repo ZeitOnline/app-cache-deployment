@@ -23,7 +23,7 @@ case $COMMAND in
     elasticsearch)
         pipenv run sphinx-build -b json . htdocs/json
         pipenv run sphinx-elasticsearch index \
-            --es-url=http://docs.zeit.de:80/elasticsearch/ \
+            --es-url=https://docs.zeit.de:443/elasticsearch/ \
             --commit=$(git show --no-patch --pretty=format:%H) \
             --project-name=delivery/app-cache htdocs/json
     ;;
