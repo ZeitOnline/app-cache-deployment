@@ -71,6 +71,15 @@ sub vcl_recv {
         set req.http.x-long-term-grace = "true";
     }
 
+    # liveblog version 3 staging
+    if (req.url ~ "^/liveblog-api-vstaging/") {
+        set req.url = regsub(req.url, "^/liveblog-api-vstaging/", "/api/blogs/");
+        set req.http.host = "lb-release350.test.superdesk.org";
+        set req.http.x-cache-auth = "true";
+        set req.http.x-ignore-cache-control = "true";
+        set req.http.x-long-term-grace = "true";
+    }
+
     # liveblog legacy version
     if (req.url ~ "^/liveblog-status/") {
         set req.url = regsub(
