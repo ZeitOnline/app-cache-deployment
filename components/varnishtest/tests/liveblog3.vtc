@@ -3,8 +3,7 @@ varnishtest "Content for liveblog3 is delivered and cached"
 
 server s1 {
     rxreq
-    expect req.url == "/api/blogs/fuselfoo"
-	expect req.http.host == "zeit-api.liveblog.pro"
+    expect req.url == "/liveblog-api-v3/fuselfoo"
     expect req.http.Cookie == <undef>
     txresp -hdr "X-Backend: liveblogapi"
 } -start
