@@ -80,9 +80,7 @@ sub vcl_recv {
 
     # liveblog legacy version
     if (req.url ~ "^/liveblog-status/") {
-        set req.url = regsub(
-            req.url, "^/liveblog-status/", "/resources/LiveDesk/");
-        set req.http.host = "zeit.superdesk.pro";
+        set req.url = regsub(req.url, "^/liveblog-status/", "/liveblog/2/api/");
     }
 
     ### --- Specific backends, based on request properties --- ###
