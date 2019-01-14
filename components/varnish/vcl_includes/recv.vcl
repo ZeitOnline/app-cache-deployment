@@ -64,6 +64,7 @@ sub vcl_recv {
 
     # liveblog version 3
     if (req.url ~ "^/liveblog-api-v3/") {
+        set req.url = regsub(req.url, "^/liveblog-api-v3/", "/liveblog/3/api/");
         set req.http.x-cache-auth = "true";
         set req.http.x-ignore-cache-control = "true";
         set req.http.x-long-term-grace = "true";
@@ -71,6 +72,7 @@ sub vcl_recv {
 
     # liveblog version 3 staging
     if (req.url ~ "^/liveblog-api-vstaging/") {
+        set req.url = regsub(req.url, "^/liveblog-api-v3/", "/liveblog/staging/api/");
         set req.http.x-cache-auth = "true";
         set req.http.x-ignore-cache-control = "true";
         set req.http.x-long-term-grace = "true";
@@ -78,9 +80,7 @@ sub vcl_recv {
 
     # liveblog legacy version
     if (req.url ~ "^/liveblog-status/") {
-        set req.url = regsub(
-            req.url, "^/liveblog-status/", "/resources/LiveDesk/");
-        set req.http.host = "zeit.superdesk.pro";
+        set req.url = regsub(req.url, "^/liveblog-status/", "/liveblog/2/api/");
     }
 
     ### --- Specific backends, based on request properties --- ###
