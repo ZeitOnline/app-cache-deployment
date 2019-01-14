@@ -64,8 +64,13 @@ sub vcl_recv {
 
     # liveblog version 3
     if (req.url ~ "^/liveblog-api-v3/") {
-        set req.url = regsub(req.url, "^/liveblog-api-v3/", "/api/blogs/");
-        set req.http.host = "zeit-api.liveblog.pro";
+        set req.http.x-cache-auth = "true";
+        set req.http.x-ignore-cache-control = "true";
+        set req.http.x-long-term-grace = "true";
+    }
+
+    # liveblog version 3 staging
+    if (req.url ~ "^/liveblog-api-vstaging/") {
         set req.http.x-cache-auth = "true";
         set req.http.x-ignore-cache-control = "true";
         set req.http.x-long-term-grace = "true";
