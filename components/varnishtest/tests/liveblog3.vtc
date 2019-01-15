@@ -5,7 +5,13 @@ server s1 {
     rxreq
     expect req.url == "/liveblog/3/api/fuselfoo"
     expect req.http.Cookie == <undef>
+    expect req.http.host == "internal-lb.dev.zeit.de"
     txresp -hdr "X-Backend: liveblogapi"
+
+    rxreq
+    expect req.url == "/liveblog/3/api/auth"
+    expect req.method == "POST"
+    txresp -hdr "X-Backend: liveblogapi-auth"
 } -start
 
 @ call varnish(['default'])
@@ -26,3 +32,10 @@ client c1 -run
 
 varnish v1 -expect cache_miss == 1
 varnish v1 -expect cache_hit == 1
+
+client c2 {
+    txreq -req "POST" -url "/liveblog-api-v3/auth" \
+        -hdr "Host: app-cache.zeit.de"
+    rxresp
+    expect resp.http.X-Backend == "liveblogapi-auth"
+} -run
