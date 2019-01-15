@@ -1,25 +1,27 @@
 ---
 driver:
   name: vagrant
-  forward_agent: true
+
+# Work around <https://github.com/test-kitchen/test-kitchen
+#  /issues/1035#issuecomment-283189967>
+transport:
+  max_ssh_sessions: 5
 
 provisioner:
   name: chef_zero
-  product_name: chef
-  product_version: 12
-
+  require_chef_omnibus: 13
 
 platforms:
   - name: ubuntu-18.04
     <% if ENV["KITCHEN_PROVIDER"] == "virtualbox" %>
     driver:
       provider: virtualbox
-      box: bento/ubuntu-16.04
+      box: bento/ubuntu-18.04
       customize:
         memory: 2048
     <% else %>
     driver:
-      box: rvanlaar/bionic64-lxc
+      box: zeitonline/bionic64-lxc
       provider: lxc
     <% end %>
 
@@ -31,15 +33,11 @@ verifier:
   <% end %>
 
 suites:
-  - name: app-cache
-    provisioner:
-      policyfile_path: policyfiles/app-cache.rb
-    driver:
-      network:
-        - ['private_network', {ip: '192.168.34.13'}]
-    attributes: 
-      batou:
-        serviceUsers: ['app-cache']
-        varnish_config: 
-          - "/srv/app-cache/deployment/work/varnish/default.vcl"
-          - "/srv/app-cache/deployment/work/varnish/vcl_includes"
+  - name: batou-app-cache
+    run_list:
+      - recipe[zeit-baseserver::kitchen]
+      - recipe[zeit-baseserver]
+      - recipe[zeit-app-cache]
+    attributes:
+      varnish:
+        storage-size: 32M

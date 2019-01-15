@@ -10,8 +10,7 @@ server s1 {
     txresp 
 
     rxreq
-    expect req.url == "/api/blogs/foo"
-    expect req.http.host == "zeit-api.liveblog.pro"
+    expect req.url == "/liveblog/3/api/foo"
     txresp 
 
     rxreq
@@ -23,8 +22,7 @@ server s1 {
     txresp -hdr "Cache-Control: no-cache"
 
     rxreq
-    expect req.url == "/api/blogs/no-cache"
-    expect req.http.host == "zeit-api.liveblog.pro"
+    expect req.url == "/liveblog/3/api/no-cache"
     txresp -hdr "Cache-Control: no-cache"
 
 } -start

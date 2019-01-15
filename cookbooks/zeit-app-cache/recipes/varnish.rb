@@ -1,4 +1,14 @@
-package "varnish"
+apt_repository "varnish" do
+  uri "https://packagecloud.io/varnishcache/varnish60lts/ubuntu/"
+  distribution node["lsb"]["codename"]
+  components ["main"]
+  key 'https://packagecloud.io/varnishcache/varnish60lts/gpgkey'
+end
+
+package "varnish" do
+  # lock prevents unwanted updates, which might trigger an uncontrolled restart
+  action [:install, :lock]
+end
 
 execute 'varnish_restart' do
   command 'systemctl daemon-reload && systemctl restart varnish && sleep 3'
@@ -46,3 +56,10 @@ template "/etc/sudoers.d/batou-varnish" do
   only_if { Dir.exists? "/etc/sudoers.d" }
 end
 
+
+if not node["varnish"]["enable_ncsa_service"]
+  # Started by default by the varnish debian package
+  service "varnishncsa" do
+    action [:stop, :disable]
+  end
+end

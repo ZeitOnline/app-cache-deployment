@@ -1,5 +1,5 @@
 name             'zeit-app-cache'
-version          '0.0.1'
+version          '1.3.0'
 
 maintainer       'ZEIT ONLINE GmbH'
 maintainer_email 'zon-backend@zeit.de'
@@ -9,8 +9,13 @@ license          'All rights reserved'
 description      'Installs/Configures app-cache'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
-chef_version     '>= 12'
+chef_version     '>= 13'
 supports         'ubuntu', '>= 18.04'
 
-depends          'apt'
-depends          'ark'
+depends 'zeit-batou-target', '=1.6.0'
+depends 'zeit-metrics'  # XXX is a project itself, thus pinned in environment.
+depends 'memcached', '=5.1.1'
+  depends 'runit', '=4.3.0'
+    depends 'packagecloud', '=1.0.1'
+    depends 'yum-epel'  # already pinned by baseserver
+depends 'zeit-zabbix'  # already pinned by baseserver
