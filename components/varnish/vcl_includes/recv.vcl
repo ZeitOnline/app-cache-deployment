@@ -64,6 +64,7 @@ sub vcl_recv {
 
     # liveblog version 3
     if (req.url ~ "^/liveblog-api-v3/") {
+        set req.http.host = "internal-lb{{component.subdomain}}.zeit.de";
         set req.url = regsub(req.url, "^/liveblog-api-v3/", "/liveblog/3/api/");
         set req.http.x-cache-auth = "true";
         set req.http.x-ignore-cache-control = "true";
@@ -72,6 +73,7 @@ sub vcl_recv {
 
     # liveblog version 3 staging
     if (req.url ~ "^/liveblog-api-vstaging/") {
+        set req.http.host = "internal-lb{{component.subdomain}}.zeit.de";
         set req.url = regsub(req.url, "^/liveblog-api-vstaging/", "/liveblog/staging/api/");
         set req.http.x-cache-auth = "true";
         set req.http.x-ignore-cache-control = "true";
@@ -80,6 +82,7 @@ sub vcl_recv {
 
     # liveblog legacy version
     if (req.url ~ "^/liveblog-status/") {
+        set req.http.host = "internal-lb{{component.subdomain}}.zeit.de";
         set req.url = regsub(req.url, "^/liveblog-status/", "/liveblog/2/api/");
     }
 
