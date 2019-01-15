@@ -5,6 +5,7 @@ server s1 {
     rxreq
     expect req.url == "/liveblog/3/api/fuselfoo"
     expect req.http.Cookie == <undef>
+    expect req.http.host == "internal-lb.dev.zeit.de"
     txresp -hdr "X-Backend: liveblogapi"
 
     rxreq
