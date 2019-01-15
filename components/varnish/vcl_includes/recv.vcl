@@ -72,7 +72,7 @@ sub vcl_recv {
 
     # liveblog version 3 staging
     if (req.url ~ "^/liveblog-api-vstaging/") {
-        set req.url = regsub(req.url, "^/liveblog-api-v3/", "/liveblog/staging/api/");
+        set req.url = regsub(req.url, "^/liveblog-api-vstaging/", "/liveblog/staging/api/");
         set req.http.x-cache-auth = "true";
         set req.http.x-ignore-cache-control = "true";
         set req.http.x-long-term-grace = "true";
