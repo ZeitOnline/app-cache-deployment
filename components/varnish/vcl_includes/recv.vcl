@@ -72,7 +72,7 @@ sub vcl_recv {
 
     # liveblog version 3 staging
     if (req.url ~ "^/liveblog-api-vstaging/") {
-        set req.url = regsub(req.url, "^/liveblog-api-v3/", "/liveblog/staging/api/");
+        set req.url = regsub(req.url, "^/liveblog-api-vstaging/", "/liveblog/staging/api/");
         set req.http.x-cache-auth = "true";
         set req.http.x-ignore-cache-control = "true";
         set req.http.x-long-term-grace = "true";
@@ -108,6 +108,10 @@ sub vcl_recv {
     # Remove cookies, where not needed.
     if (req.backend_hint != agatho) {
         unset req.http.Cookie;
+    }
+
+    if (req.method != "GET" && req.method != "HEAD") {
+        return (pass);
     }
 
     if (req.http.x-cache-auth == "true") {
