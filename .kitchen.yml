@@ -38,6 +38,7 @@ suites:
       - recipe[zeit-baseserver::kitchen]
       - recipe[zeit-baseserver]
       - recipe[zeit-app-cache]
+      - recipe[zeit-app-cache::role-haproxy]
     attributes:
       varnish:
         storage-size: 32M

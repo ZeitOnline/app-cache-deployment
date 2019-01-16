@@ -4,9 +4,11 @@ from batou.lib.file import Directory, File
 
 class Varnish(Component):
 
-    subdomain = ".dev"
+    haproxy_backend = None
 
     def configure(self):
+        self.subdomain = self.require_one('settings').subdomain
+
         self += File(
             "default.vcl",
             source="default.vcl",
@@ -56,6 +58,8 @@ class Varnish(Component):
             is_template="true")
 
         self.provide('varnish_dir', self.workdir)
+        # XXX port duplicated from zeit-app-cache cookbook default attribute
+        self.provide('varnish:http', self.host.fqdn)
 
 
 @platform('debian', Varnish)
