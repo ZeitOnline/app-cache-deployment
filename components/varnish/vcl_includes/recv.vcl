@@ -24,7 +24,7 @@ sub vcl_recv {
     ### --- Default backend --- ###
     # The default backend is feeds, which points to the internal-lb HA cluster.
     # This round trip is needed, because varnish cannot resolve SSL backends itself.
-    # Note: Specific backends are defined in internal-lb config.
+    # Note: The specific backends are defined in the haproxy config.
 
     set req.backend_hint = default;
 
@@ -82,8 +82,6 @@ sub vcl_recv {
     if (req.url ~ "^/liveblog-status/") {
         set req.url = regsub(req.url, "^/liveblog-status/", "/liveblog/2/api/");
     }
-
-    ### --- Specific backends, based on request properties --- ###
 
     # -- community --
     if (req.url ~ "^/agatho/") {
