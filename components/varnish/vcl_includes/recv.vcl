@@ -1,12 +1,5 @@
 sub vcl_recv {
 
-    ### --- Access restriction --- ###
-    # Only internal services will ever be allowed to use this varnish
-
-    if (!client.ip ~ zeit) {
-        return(synth(405, "Not allowed."));
-    }
-
     ### --- Health check --- ###
 
     if (req.url == "/cache_health") {
