@@ -64,7 +64,6 @@ sub vcl_recv {
 
     # liveblog version 3
     if (req.url ~ "^/liveblog-api-v3/") {
-        set req.http.host = "internal-lb{{component.subdomain}}.zeit.de";
         set req.url = regsub(req.url, "^/liveblog-api-v3/", "/liveblog/3/api/");
         set req.http.x-cache-auth = "true";
         set req.http.x-ignore-cache-control = "true";
@@ -73,7 +72,6 @@ sub vcl_recv {
 
     # liveblog version 3 staging
     if (req.url ~ "^/liveblog-api-vstaging/") {
-        set req.http.host = "internal-lb{{component.subdomain}}.zeit.de";
         set req.url = regsub(req.url, "^/liveblog-api-vstaging/", "/liveblog/staging/api/");
         set req.http.x-cache-auth = "true";
         set req.http.x-ignore-cache-control = "true";
@@ -82,7 +80,6 @@ sub vcl_recv {
 
     # liveblog legacy version
     if (req.url ~ "^/liveblog-status/") {
-        set req.http.host = "internal-lb{{component.subdomain}}.zeit.de";
         set req.url = regsub(req.url, "^/liveblog-status/", "/liveblog/2/api/");
     }
 
@@ -93,18 +90,6 @@ sub vcl_recv {
         set req.http.host = "community-app{{component.subdomain}}.zeit.de";
         set req.http.x-keep-cookies = "true";
     }
-
-
-    ### --- Exit Strategy --- ###
-    # An infinite loop would be triggered for requests to the default
-    # backend with an app-cache host header. To prevent it, we
-    # respond with a 404.
-
-    if (req.http.host == "app-cache{{component.subdomain}}.zeit.de" &&
-            req.backend_hint == default) {
-        return(synth(404, "Not found"));
-    }
-
 
     ### --- Useful patterns --- ###
 
