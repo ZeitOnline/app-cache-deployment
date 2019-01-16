@@ -4,11 +4,9 @@ varnishtest "Content for agatho can be purged"
 server s1 {
     rxreq
     expect req.url == "/agatho/thread/abc"
-    expect req.http.host == "community-app.dev.zeit.de"
     txresp -hdr "X-Backend: default"
     rxreq
     expect req.url == "/agatho/thread/abc"
-    expect req.http.host == "community-app.dev.zeit.de"
     txresp -hdr "X-Backend: default"
 } -start
 

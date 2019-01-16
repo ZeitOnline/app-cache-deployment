@@ -24,29 +24,25 @@ sub vcl_recv {
     # -- homepage feeds --
 
     if (req.url == "/academics-hp-feed") {
-        set req.http.host = "jobs.zeit.de";
-        set req.url = "/cached-rss-feeds/adpanel_333644.html";
+        set req.url = "/hp-feed/academics";
         set req.http.x-ignore-cache-control = "true";
         set req.http.x-long-term-grace = "true";
     }
 
     if (req.url == "/brandeins-hp-feed") {
-        set req.http.host = "www.brandeins.de";
-        set req.url = "/zeit-feed.rss";
+        set req.url = "/hp-feed/brandeins";
         set req.http.x-ignore-cache-control = "true";
         set req.http.x-long-term-grace = "true";
     }
 
     if (req.url == "/spektrum-hp-feed") {
-        set req.http.host = "www.spektrum.de";
-        set req.url = "/alias/rss/zeit-kooperationsfeed-mit-kategorien/1342995";
+        set req.url = "/hp-feed/spektrum";
         set req.http.x-ignore-cache-control = "true";
         set req.http.x-long-term-grace = "true";
     }
 
     if (req.url == "/zett-hp-feed") {
-        set req.http.host = "ze.tt";
-        set req.url = "/feed-zon";
+        set req.url = "/hp-feed/zett";
         set req.http.x-ignore-cache-control = "true";
         set req.http.x-long-term-grace = "true";
     }
@@ -78,7 +74,6 @@ sub vcl_recv {
 
     # -- community --
     if (req.url ~ "^/agatho/") {
-        set req.http.host = "community-app{{component.subdomain}}.zeit.de";
         set req.http.x-keep-cookies = "true";
     }
 
