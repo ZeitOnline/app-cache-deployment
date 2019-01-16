@@ -5,17 +5,17 @@ server s1 {
     rxreq
     expect req.url == "/agatho/thread/abc"
     expect req.http.host == "community-app.dev.zeit.de"
-    txresp -hdr "X-Backend: agatho"
+    txresp -hdr "X-Backend: default"
 } -start
 
-@ call varnish(['agatho'])
+@ call varnish(['default'])
     include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 
 client c1 {
     txreq -url "/agatho/thread/abc" -hdr "Host: app-cache.zeit.de"
     rxresp
-    expect resp.http.X-Backend == "agatho"
+    expect resp.http.X-Backend == "default"
 } -run
 
 varnish v1 -expect cache_miss == 1
