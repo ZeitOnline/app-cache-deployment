@@ -7,8 +7,6 @@ class Varnish(Component):
     haproxy_backend = None
 
     def configure(self):
-        self.subdomain = self.require_one('settings').subdomain
-
         self += File(
             "default.vcl",
             source="default.vcl",

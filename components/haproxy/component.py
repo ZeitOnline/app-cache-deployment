@@ -5,6 +5,8 @@ import re
 
 class HAProxy(Component):
 
+    subdomain = '.dev'
+
     memcache_settings = [
         'inter 5s fastinter 1s rise 2 fall 3',
         'backup',
@@ -25,8 +27,6 @@ class HAProxy(Component):
     ]
 
     def configure(self):
-        self.subdomain = self.require_one('settings').subdomain
-
         self.nameservers = []
         for line in open('/etc/resolv.conf'):
             if line.startswith('nameserver'):
