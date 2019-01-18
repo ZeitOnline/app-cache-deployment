@@ -64,8 +64,17 @@ sub vcl_recv {
 
     # liveblog version 3
     if (req.url ~ "^/liveblog-api-v3/") {
-        set req.url = regsub(req.url, "^/liveblog-api-v3/", "/api/blogs/");
-        set req.http.host = "zeit-api.liveblog.pro";
+        set req.http.host = "internal-lb{{component.subdomain}}.zeit.de";
+        set req.url = regsub(req.url, "^/liveblog-api-v3/", "/liveblog/3/api/");
+        set req.http.x-cache-auth = "true";
+        set req.http.x-ignore-cache-control = "true";
+        set req.http.x-long-term-grace = "true";
+    }
+
+    # liveblog version 3 staging
+    if (req.url ~ "^/liveblog-api-vstaging/") {
+        set req.http.host = "internal-lb{{component.subdomain}}.zeit.de";
+        set req.url = regsub(req.url, "^/liveblog-api-vstaging/", "/liveblog/staging/api/");
         set req.http.x-cache-auth = "true";
         set req.http.x-ignore-cache-control = "true";
         set req.http.x-long-term-grace = "true";
@@ -73,17 +82,16 @@ sub vcl_recv {
 
     # liveblog legacy version
     if (req.url ~ "^/liveblog-status/") {
-        set req.url = regsub(
-            req.url, "^/liveblog-status/", "/resources/LiveDesk/");
-        set req.http.host = "zeit.superdesk.pro";
+        set req.http.host = "internal-lb{{component.subdomain}}.zeit.de";
+        set req.url = regsub(req.url, "^/liveblog-status/", "/liveblog/2/api/");
     }
 
     ### --- Specific backends, based on request properties --- ###
 
     # -- community --
     if (req.url ~ "^/agatho/") {
-        set req.backend_hint = agatho;
         set req.http.host = "community-app{{component.subdomain}}.zeit.de";
+        set req.http.x-keep-cookies = "true";
     }
 
 
@@ -100,9 +108,12 @@ sub vcl_recv {
 
     ### --- Useful patterns --- ###
 
-    # Remove cookies, where not needed.
-    if (req.backend_hint != agatho) {
+    if (! req.http.x-keep-cookies) {
         unset req.http.Cookie;
+    }
+
+    if (req.method != "GET" && req.method != "HEAD") {
+        return (pass);
     }
 
     if (req.http.x-cache-auth == "true") {

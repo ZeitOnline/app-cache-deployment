@@ -1,0 +1,162 @@
+#!/usr/bin/python
+#
+# Automates branch merging and tagging that goes along with a
+# master/staging/production batou deployment repository.
+# Takes all its inspiration (and quite a bit of code) from zest.releaser.
+import ConfigParser
+import argparse
+import os
+import subprocess
+
+
+# XXX This is deployment-specific
+BRANCHES = {
+    'staging': 'master',
+    'production': 'staging',
+}
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description='Run batou with branch support')
+    parser.add_argument(
+        'branch', metavar='{staging,production}',
+        help='Branch to deploy')
+    options = parser.parse_args(argv)
+    if options.branch not in BRANCHES.keys():
+        parser.print_usage()
+        raise SystemExit(1)
+
+    options.target = options.branch
+    options.source = BRANCHES[options.target]
+
+    assert_clean_checkout(options)
+    update_source_branch(options)
+    update_target_branch(options)
+    merge_source_branch(options)
+    tag_deployment(options)
+    run_batou(options)
+
+
+def assert_clean_checkout(options):
+    if cmd('git status --short --untracked-files=no'):
+        print('This is NOT a clean checkout. Aborting.')
+        raise SystemExit(1)
+
+
+def update_source_branch(options):
+    if cmd('git rev-parse --abbrev-ref HEAD') != options.source:
+        if ask('OK to update branch "%s"' % options.source):
+            cmd('git checkout %s' % options.source)
+            print cmd('git pull')
+    if ('Your branch is ahead of' in cmd('LANG=C git status') and
+            ask('OK to push commits to the server?')):
+        print(cmd('git push'))
+
+
+def update_target_branch(options):
+    cmd('git checkout %s' % options.target)
+    print(cmd('git pull'))
+
+
+def merge_source_branch(options):
+    merge = cmd('LANG=C git merge --no-ff --no-commit %s' % options.source)
+    if 'CONFLICT' in merge:
+        print('Conflict during merge. Aborting.')
+        raise SystemExit(0)
+    print(cmd('git diff --staged'))
+    if not ask('OK to commit this'):
+        raise SystemExit(0)
+    cmd('git commit -m "Merge %s into %s"' % (
+        options.source, options.target))
+
+
+def tag_deployment(options):
+    version = _guess_deployment_version(options.target)
+    tag = '%s-%s' % (options.target, version)
+    while _tag_exists(tag):
+        parts = tag.split('-')
+        tag = '-'.join([parts[0], str(int(parts[1]) + 1)])
+
+    response = get_input('Tag deployment as [%s]: ' % tag)
+    tag = response or tag
+    if _tag_exists(tag):
+        print('Tag "%s" already exists. Aborting' % tag)
+        raise SystemExit(1)
+    tagcmd = 'git tag %s -m "%s"' % (tag, version)
+    print(tagcmd)
+    if ask('Run this command'):
+        cmd(tagcmd)
+
+
+def _guess_deployment_version(target):
+    # XXX This is deployment-specific.
+    return cmd(
+        'git describe --tags {target} | sed -e "s/[^-]*-\([^-]*\)-.*/\\1/"'
+        .format(target=target), acceptable_returncodes=[0, 128]) or '1'
+
+
+def _tag_exists(tag):
+    return cmd('git rev-parse --verify --quiet %s' % tag,
+               acceptable_returncodes=[0, 1])
+
+
+def run_batou(options):
+    if ask('OK to push commits to the server?'):
+        cmd('git push')
+        cmd('git push --tags')
+    batou = './batou deploy %s' % options.target
+    print('Ready for "%s"' % batou)
+    if ask('Run this command'):
+        os.system(batou)
+
+
+# Helper functions ------------------------------------------------------------
+
+def cmd(cmd, acceptable_returncodes=[0]):
+    # Adapted from batou.utils
+    process = subprocess.Popen(
+        cmd, shell=True,
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    if process.returncode not in acceptable_returncodes:
+        raise RuntimeError('"%s" returned %s:\n%s\n%s' % (
+            cmd, process.returncode, stdout, stderr))
+    # XXX This simply assumes utf8 -- is that feasible?
+    return stdout.strip().decode('utf8')
+
+
+def get_input(question):
+    # XXX This simply assumes utf8 -- is that feasible?
+    return raw_input(question).decode('utf-8').strip()
+
+
+def ask(question, default=True):
+    # Taken from zest.releaser.utils
+    while True:
+        yn = 'y/n'
+        if default is True:
+            yn = 'Y/n'
+        if default is False:
+            yn = 'y/N'
+        q = question + " (%s)? " % yn
+        input_value = get_input(q)
+        if input_value:
+            answer = input_value
+        else:
+            answer = ''
+        if not answer and default is not None:
+            return default
+        if answer:
+            answer = answer[0].lower()
+            if answer == 'y':
+                return True
+            if answer == 'n':
+                return False
+        # We really want an answer.
+        print('Please explicitly answer y/n')
+        continue
+
+
+if __name__ == '__main__':
+    main()
