@@ -3,10 +3,9 @@ varnishtest "Content for ze.tt is delivered and cached"
 
 server s1 {
     rxreq
-    expect req.url == "/feed-zon"
-	expect req.http.host == "ze.tt"
+    expect req.url == "/hp-feed/zett"
     expect req.http.Cookie == <undef>
-    txresp -hdr "X-Backend: zett"
+    txresp -hdr "X-Backend: default"
 } -start
 
 @ call varnish(['default'])
@@ -17,7 +16,7 @@ client c1 {
     txreq -url "/zett-hp-feed" -hdr "Host: app-cache.zeit.de" \
         -hdr "Cookie: foo"
     rxresp
-    expect resp.http.X-Backend == "zett"
+    expect resp.http.X-Backend == "default"
 } -run
 
 varnish v1 -expect cache_miss == 1
