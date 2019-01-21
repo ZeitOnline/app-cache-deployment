@@ -7,7 +7,6 @@ from batou.lib.file import SyncDirectory, Directory, File
 
 BACKENDS = {
     'default',
-    'agatho',
 }
 
 

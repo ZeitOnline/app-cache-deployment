@@ -12,7 +12,8 @@ Außerdem steht ein memcache zur Verfügung (der von zeit.web fürs Caching genu
     :align: center
     :target: _images/architecture.png
 
-Fast alle Backends drehen eine "Schleife", d.h. der Varnish dreht sich wieder um und geht über den haproxy.
+Varnish dreht für seine Backends eine "Schleife" über den haproxy.
+(Mit einem separaten Frontend auf Port 8081, um Endlosrekursion zu vermeiden.)
 Das dient dazu, dass haproxy im Gegensatz zu varnish folgende Features bietet:
 
 * HTTPS für Backends
