@@ -3,10 +3,9 @@ varnishtest "Content for academics is delivered and cached"
 
 server s1 {
     rxreq
-    expect req.url == "/cached-rss-feeds/adpanel_333644.html"
-	expect req.http.host == "jobs.zeit.de"
+    expect req.url == "/hp-feed/academics"
     expect req.http.Cookie == <undef>
-    txresp -hdr "X-Backend: academics"
+    txresp -hdr "X-Backend: default"
 } -start
 
 @ call varnish(['default'])
@@ -17,7 +16,7 @@ client c1 {
     txreq -url "/academics-hp-feed" -hdr "Host: app-cache.zeit.de" \
         -hdr "Cookie: foo"
     rxresp
-    expect resp.http.X-Backend == "academics"
+    expect resp.http.X-Backend == "default"
 } -run
 
 varnish v1 -expect cache_miss == 1
