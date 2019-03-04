@@ -6,7 +6,7 @@ source "https://supermarket.chef.io"
 def zon_cookbook(name)
   cookbook(name, {
     git: "git@github.com:ZeitOnline/chef",
-    ref: "c3a9cf89",
+    ref: "096faf5c",
     rel: "cookbooks/#{name}",
   })
 end
