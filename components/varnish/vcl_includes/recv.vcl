@@ -19,7 +19,7 @@ sub vcl_recv {
     # This round trip is needed, because varnish cannot resolve SSL backends itself.
     # Note: The specific backends are defined in the haproxy config.
 
-    set req.backend_hint = default;
+    set req.backend_hint = haproxy;
 
     # -- homepage feeds --
 

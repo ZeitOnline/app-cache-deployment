@@ -8,7 +8,7 @@ server s1 {
     txresp -hdr "X-Backend: liveblog"
 } -start
 
-@ call varnish(['default'])
+@ call varnish(['haproxy'])
     include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 
