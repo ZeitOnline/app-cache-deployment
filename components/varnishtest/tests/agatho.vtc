@@ -4,17 +4,17 @@ varnishtest "Content from agatho is delivered and cached"
 server s1 {
     rxreq
     expect req.url == "/agatho/thread/abc"
-    txresp -hdr "X-Backend: default"
+    txresp -hdr "X-Backend: haproxy"
 } -start
 
-@ call varnish(['default'])
+@ call varnish(['haproxy'])
     include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 
 client c1 {
     txreq -url "/agatho/thread/abc" -hdr "Host: app-cache.zeit.de"
     rxresp
-    expect resp.http.X-Backend == "default"
+    expect resp.http.X-Backend == "haproxy"
 } -run
 
 varnish v1 -expect cache_miss == 1
