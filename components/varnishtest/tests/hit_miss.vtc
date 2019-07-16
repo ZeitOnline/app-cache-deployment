@@ -27,7 +27,7 @@ server s1 {
 
 } -start
 
-@ call varnish(['default'])
+@ call varnish(['haproxy'])
     include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 

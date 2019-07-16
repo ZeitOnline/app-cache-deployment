@@ -11,6 +11,7 @@ case $COMMAND in
     integration)
         cd $DIR/..
         rm -f Berksfile.lock  # Always use latest version of zeit-baseserver.
+        trap "kitchen destroy batou" EXIT
         kitchen destroy batou
         kitchen converge batou
         ./batou deploy kitchen

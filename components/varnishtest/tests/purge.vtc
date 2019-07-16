@@ -4,13 +4,13 @@ varnishtest "Content for agatho can be purged"
 server s1 {
     rxreq
     expect req.url == "/agatho/thread/abc"
-    txresp -hdr "X-Backend: default"
+    txresp -hdr "X-Backend: haproxy"
     rxreq
     expect req.url == "/agatho/thread/abc"
-    txresp -hdr "X-Backend: default"
+    txresp -hdr "X-Backend: haproxy"
 } -start
 
-@ call varnish(['default'])
+@ call varnish(['haproxy'])
     include "/etc/varnish/vcl_includes/test.vcl";
 @ endcall
 
@@ -18,7 +18,7 @@ server s1 {
 client c1 {
     txreq -url "/agatho/thread/abc" -hdr "Host: app-cache.zeit.de"
     rxresp
-    expect resp.http.X-Backend == "default"
+    expect resp.http.X-Backend == "haproxy"
 } -run
 
 client c1 -run
