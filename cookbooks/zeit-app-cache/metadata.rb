@@ -1,5 +1,5 @@
 name             'zeit-app-cache'
-version          '1.3.3'
+version          '1.3.4'
 
 maintainer       'ZEIT ONLINE GmbH'
 maintainer_email 'zon-backend@zeit.de'
@@ -12,7 +12,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 chef_version     '>= 13'
 supports         'ubuntu', '>= 18.04'
 
-depends 'zeit-batou-target', '=1.6.2'
+depends 'zeit-batou-target', '=1.7.0'
 depends 'zeit-haproxy', '=2.1.0'
 depends 'zeit-metrics'  # XXX is a project itself, thus pinned in environment.
 depends 'memcached', '=5.1.1'
