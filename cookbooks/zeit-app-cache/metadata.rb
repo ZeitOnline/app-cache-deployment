@@ -1,5 +1,5 @@
 name             'zeit-app-cache'
-version          '1.3.2'
+version          '1.3.3'
 
 maintainer       'ZEIT ONLINE GmbH'
 maintainer_email 'zon-backend@zeit.de'
@@ -13,6 +13,7 @@ chef_version     '>= 13'
 supports         'ubuntu', '>= 18.04'
 
 depends 'zeit-batou-target', '=1.6.2'
+depends 'zeit-haproxy', '=2.1.0'
 depends 'zeit-metrics'  # XXX is a project itself, thus pinned in environment.
 depends 'memcached', '=5.1.1'
   depends 'runit', '=4.3.0'
