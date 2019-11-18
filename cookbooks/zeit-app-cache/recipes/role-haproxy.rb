@@ -3,3 +3,4 @@ node.default["batou"]["haproxy_config"] = "/srv/app-cache/deployment/work/haprox
 
 include_recipe "zeit-batou-target"
 include_recipe "zeit-batou-target::haproxy"
+include_recipe "zeit-haproxy::monitoring"
