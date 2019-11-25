@@ -10,3 +10,4 @@ end
 
 local_cookbook "zeit-app-cache"
 cookbook "zeit-baseserver"  # only for the version pins
+cookbook "zeit-metrics", ">=1.0.0"
