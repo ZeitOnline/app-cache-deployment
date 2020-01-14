@@ -7,10 +7,10 @@ Ein varnish ist vorhanden, um manche Dienste zu cachen und zu entlasten.
 Außerdem steht ein memcache zur Verfügung (der von zeit.web fürs Caching genutzt wird).
 
 
-.. image:: ./architecture.png
+.. image:: ./architecture.svg
     :alt: Architecture Overview
     :align: center
-    :target: _images/architecture.png
+    :target: _images/architecture.svg
 
 Varnish dreht für seine Backends eine "Schleife" über den haproxy.
 (Mit einem separaten Frontend auf Port 8081, um Endlosrekursion zu vermeiden.)
