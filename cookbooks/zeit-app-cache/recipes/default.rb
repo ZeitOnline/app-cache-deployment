@@ -14,9 +14,6 @@ node.default["varnish"]["storage-size"] = "1655M"
 
 include_recipe "zeit-batou-target"
 include_recipe "zeit-app-cache::varnish"
-
-include_recipe "xinetd"
-include_recipe "zeit-metrics::varnishlog"
 include_recipe "zeit-zabbix::monitor-varnish"
 
 include_recipe "memcached"

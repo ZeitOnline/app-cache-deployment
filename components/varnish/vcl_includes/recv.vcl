@@ -35,12 +35,6 @@ sub vcl_recv {
         set req.http.x-long-term-grace = "true";
     }
 
-    if (req.url == "/spektrum-hp-feed") {
-        set req.url = "/hp-feed/spektrum";
-        set req.http.x-ignore-cache-control = "true";
-        set req.http.x-long-term-grace = "true";
-    }
-
     if (req.url == "/zett-hp-feed") {
         set req.url = "/hp-feed/zett";
         set req.http.x-ignore-cache-control = "true";
