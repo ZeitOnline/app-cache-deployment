@@ -11,5 +11,7 @@ RUN echo "deb https://packagecloud.io/varnishcache/varnish60lts/ubuntu/ bionic m
 RUN apt-get update && apt-get install -y \
    python3 varnish python3-pip
 RUN pip3 install pytest
-WORKDIR /varnishtest 
-ENTRYPOINT ["pytest"]
+WORKDIR /varnishtest
+ENV LANG=en_US.utf-8
+ENV PYTHONDONTWRITEBYTECODE 1
+ENTRYPOINT ["pytest", "-p", "no:cacheprovider"]
