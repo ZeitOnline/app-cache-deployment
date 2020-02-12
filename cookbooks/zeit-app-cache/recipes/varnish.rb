@@ -57,9 +57,21 @@ template "/etc/sudoers.d/batou-varnish" do
 end
 
 
-if not node["varnish"]["enable_ncsa_service"]
+if not node["varnish"]["ncsa_format"]
   # Started by default by the varnish debian package
   service "varnishncsa" do
     action [:stop, :disable]
+  end
+else
+  service "varnishncsa"
+  directory "/etc/systemd/system/varnishncsa.service.d"
+  template "/etc/systemd/system/varnishncsa.service.d/service.conf" do
+    source "varnishncsa.service.erb"
+    notifies :run, "execute[systemd-reload]"
+    notifies :restart, "service[varnishncsa]"
+  end
+  execute "systemd-reload" do
+    command "systemctl daemon-reload"
+    action :nothing
   end
 end
