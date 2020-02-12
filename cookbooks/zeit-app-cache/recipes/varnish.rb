@@ -1,8 +1,8 @@
 apt_repository "varnish" do
-  uri "https://packagecloud.io/varnishcache/varnish60lts/ubuntu/"
+  uri "https://packagecloud.io/varnishcache/varnish63/ubuntu/"
   distribution node["lsb"]["codename"]
   components ["main"]
-  key 'https://packagecloud.io/varnishcache/varnish60lts/gpgkey'
+  key 'https://packagecloud.io/varnishcache/varnish63/gpgkey'
 end
 
 package "varnish" do
