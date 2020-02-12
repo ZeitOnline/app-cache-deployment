@@ -74,4 +74,8 @@ else
     command "systemctl daemon-reload"
     action :nothing
   end
+
+  template "/etc/logrotate.d/varnish" do
+    source "logrotate.conf"
+  end
 end
