@@ -6,3 +6,4 @@ default["varnish"]["send-timeout"] = "60"
 # '%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-agent}i"'
 default["varnish"]["ncsa_format"] = false
 default["varnish"]["ncsa_options"] = ""
+default["varnish"]["ncsa_logrotate_hourly"] = false

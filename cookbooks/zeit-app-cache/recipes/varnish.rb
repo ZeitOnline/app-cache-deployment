@@ -74,8 +74,14 @@ else
     command "systemctl daemon-reload"
     action :nothing
   end
+end
 
+if node["varnish"]["ncsa_logrotate_hourly"]
   template "/etc/logrotate.d/varnish" do
     source "logrotate.conf"
+  end
+  template "/etc/cron.hourly/logrotate-varnish" do
+    source "logrotate.cron"
+    mode "0755"
   end
 end
