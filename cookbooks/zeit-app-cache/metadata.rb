@@ -1,5 +1,5 @@
 name             'zeit-app-cache'
-version          '1.4.0'
+version          '1.5.0'
 
 maintainer       'ZEIT ONLINE GmbH'
 maintainer_email 'zon-backend@zeit.de'

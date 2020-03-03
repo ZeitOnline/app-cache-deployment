@@ -1,8 +1,10 @@
+version = node["varnish"]["version"].gsub('.', '')
+
 apt_repository "varnish" do
-  uri "https://packagecloud.io/varnishcache/varnish63/ubuntu/"
+  uri "https://packagecloud.io/varnishcache/varnish#{version}/ubuntu/"
   distribution node["lsb"]["codename"]
   components ["main"]
-  key 'https://packagecloud.io/varnishcache/varnish63/gpgkey'
+  key "https://packagecloud.io/varnishcache/varnish#{version}/gpgkey"
 end
 
 package "varnish" do
