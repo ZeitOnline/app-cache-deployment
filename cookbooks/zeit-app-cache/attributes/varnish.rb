@@ -2,8 +2,9 @@ default["varnish"] = {}
 default["varnish"]["version"] = "6.3"
 default["varnish"]["port"] = "8080"
 default["varnish"]["storage-size"] = "256M"
-default["varnish"]["send-timeout"] = "60"
-default["varnish"]["workspace-client"] = "64k"
+default["varnish"]["parameters"] = {}
+default["varnish"]["parameters"]["send_timeout"] = "60"
+default["varnish"]["parameters"]["workspace_client"] = "64k"
 # To get the upstream default format, set to this:
 # '%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-agent}i"'
 default["varnish"]["ncsa_format"] = false
