@@ -19,4 +19,4 @@ depends 'memcached', '=5.1.1'
     depends 'packagecloud', '=1.0.1'
     depends 'yum-epel'  # already pinned by baseserver
 depends 'zeit-zabbix'  # already pinned by baseserver
-depends 'prometheus_exporters', '>=0.15.100'
+depends 'prometheus_exporters', '>=0.15.102'
