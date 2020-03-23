@@ -87,3 +87,6 @@ if node["varnish"]["ncsa_logrotate_hourly"]
     mode "0755"
   end
 end
+
+include_recipe "prometheus_exporters::varnish"
+node.default["prometheus"]["exporters"]["varnish"] = {"port" => node["prometheus_exporters"]["varnish"]["port"]}
