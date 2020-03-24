@@ -1,4 +1,4 @@
-from batou.component import Component, platform
+from batou.component import Component, Attribute, platform
 from batou.lib.file import File
 import re
 
@@ -27,6 +27,11 @@ class HAProxy(Component):
         "217.13.68.0/23",   # Gaertner
         "192.168.0.0/16",   # Docker
     ]
+
+    # We hard-code this here, but it comes from zeit-letsencrypt-acme.sh recipe
+    # (`node['acme.sh']['haproxy']['pem_file']`)
+    ssl_cert = Attribute(
+        default='/etc/haproxy/letsencrypt/fullchain_with_key.pem')
 
     def configure(self):
         self.nameservers = []
