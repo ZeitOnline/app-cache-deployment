@@ -12,7 +12,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 chef_version     '>= 13'
 supports         'ubuntu', '>= 18.04'
 
-depends 'zeit-batou-target', '=1.7.0'
+depends 'zeit-batou-target', '=1.7.1'
 depends 'zeit-haproxy', '=2.1.0'
 depends "zeit-letsencrypt-acme.sh"  # pinned in env
 depends 'memcached', '=5.1.1'
