@@ -1,5 +1,5 @@
 name             'zeit-app-cache'
-version          '1.3.5'
+version          '1.9.0'
 
 maintainer       'ZEIT ONLINE GmbH'
 maintainer_email 'zon-backend@zeit.de'
@@ -14,8 +14,10 @@ supports         'ubuntu', '>= 18.04'
 
 depends 'zeit-batou-target', '=1.7.0'
 depends 'zeit-haproxy', '=2.1.0'
+depends "zeit-letsencrypt-acme.sh"  # pinned in env
 depends 'memcached', '=5.1.1'
   depends 'runit', '=4.3.0'
     depends 'packagecloud', '=1.0.1'
     depends 'yum-epel'  # already pinned by baseserver
 depends 'zeit-zabbix'  # already pinned by baseserver
+depends 'prometheus_exporters', '>=0.15.102'

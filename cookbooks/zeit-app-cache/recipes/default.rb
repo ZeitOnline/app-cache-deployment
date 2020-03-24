@@ -18,3 +18,4 @@ include_recipe "zeit-zabbix::monitor-varnish"
 
 include_recipe "memcached"
 include_recipe "zeit-zabbix::monitor-memcached"
+include_recipe "prometheus_exporters::memcache"
