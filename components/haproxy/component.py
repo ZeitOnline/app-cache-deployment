@@ -50,5 +50,5 @@ class ReloadHAProxy(Component):
         self.parent.assert_no_subcomponent_changes()
 
     def update(self):
-        self.cmd('/usr/sbin/haproxy -c -f /etc/haproxy/haproxy.cfg')
+        self.cmd('sudo /usr/sbin/haproxy -c -f /etc/haproxy/haproxy.cfg')
         self.cmd('sudo /etc/init.d/haproxy reload')
