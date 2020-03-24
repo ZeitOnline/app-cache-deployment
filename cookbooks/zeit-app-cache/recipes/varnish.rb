@@ -1,8 +1,10 @@
+version = node["varnish"]["version"].gsub('.', '')
+
 apt_repository "varnish" do
-  uri "https://packagecloud.io/varnishcache/varnish60lts/ubuntu/"
+  uri "https://packagecloud.io/varnishcache/varnish#{version}/ubuntu/"
   distribution node["lsb"]["codename"]
   components ["main"]
-  key 'https://packagecloud.io/varnishcache/varnish60lts/gpgkey'
+  key "https://packagecloud.io/varnishcache/varnish#{version}/gpgkey"
 end
 
 package "varnish" do
@@ -57,9 +59,34 @@ template "/etc/sudoers.d/batou-varnish" do
 end
 
 
-if not node["varnish"]["enable_ncsa_service"]
+if not node["varnish"]["ncsa_format"]
   # Started by default by the varnish debian package
   service "varnishncsa" do
     action [:stop, :disable]
   end
+else
+  service "varnishncsa"
+  directory "/etc/systemd/system/varnishncsa.service.d"
+  template "/etc/systemd/system/varnishncsa.service.d/service.conf" do
+    source "varnishncsa.service.erb"
+    notifies :run, "execute[systemd-reload]"
+    notifies :restart, "service[varnishncsa]"
+  end
+  execute "systemd-reload" do
+    command "systemctl daemon-reload"
+    action :nothing
+  end
 end
+
+if node["varnish"]["ncsa_logrotate_hourly"]
+  template "/etc/logrotate.d/varnish" do
+    source "logrotate.conf"
+  end
+  template "/etc/cron.hourly/logrotate-varnish" do
+    source "logrotate.cron"
+    mode "0755"
+  end
+end
+
+include_recipe "prometheus_exporters::varnish"
+node.default["prometheus"]["exporters"]["varnish"] = {"port" => node["prometheus_exporters"]["varnish"]["port"]}

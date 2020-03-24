@@ -35,7 +35,7 @@ TasksMax=infinity
 LimitCORE=infinity
 
 ExecStart=
-ExecStart=/usr/sbin/varnishd -a 0.0.0.0:<%=node["varnish"]["port"]%> -T localhost:6082 -f /etc/varnish/default.vcl -s malloc,<%=node["varnish"]["storage-size"]%> -p send_timeout=<%=node["varnish"]["send-timeout"]%>
+ExecStart=/usr/sbin/varnishd -a 0.0.0.0:<%=node["varnish"]["port"]%> -T localhost:6082 -f /etc/varnish/default.vcl -s malloc,<%=node["varnish"]["storage-size"]%> <%node["varnish"]["parameters"].each do |param,value|%>-p <%=param%>=<%=value%> <% end %>
 ExecReload=/usr/sbin/varnishreload
 
 [Install]
