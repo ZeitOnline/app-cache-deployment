@@ -16,4 +16,7 @@ sub vcl_backend_response {
         set beresp.grace = 48h;
     }
 
+    if (beresp.status >= 500 && bereq.is_bgfetch) {
+         return (abandon);
+    }
 }
