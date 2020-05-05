@@ -15,7 +15,7 @@ import subprocess
 # download and copy this file to bootstrap a new batou installation.
 BOOTSTRAP_VERSION_MARKER = '{' + '{version}' + '}'
 
-version = os.environ.get('BATOU_VERSION', '1.10.0')
+version = os.environ.get('BATOU_VERSION', '1.13.0')
 develop = os.environ.get('BATOU_DEVELOP', '')
 
 
@@ -37,12 +37,12 @@ def install_venv():
     for fast in ['-F', '--fast']:
         while fast in sys.argv:
             sys.argv.remove(fast)
-    cmd('virtualenv --python=python2.7 .batou')
+    cmd('virtualenv --python=python2.7 --no-download .batou')
 
 
 def install_pip():
     # XXX give advice if we can't get the right pip version
-    cmd('.batou/bin/pip install "pip>=8.0"')
+    cmd('.batou/bin/pip install "pip>=10.0"')
 
 
 base = os.path.dirname(__file__) or '.'
