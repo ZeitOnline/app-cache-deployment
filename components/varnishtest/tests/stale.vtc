@@ -1,0 +1,69 @@
+varnishtest "Deliver from grace, if backend responds with server error"
+
+
+server s1 {
+    rxreq
+    expect req.url == "/hp-feed/zett"
+    expect req.http.Cookie == <undef>
+    txresp -hdr "X-Backend: haproxy-1" -hdr "x-maxage: 1"
+    accept
+
+    rxreq
+    expect req.url == "/hp-feed/zett"
+    expect req.http.Cookie == <undef>
+    txresp -status 500 -hdr "X-Backend: haproxy-failed" -hdr "x-maxage: 1"
+    accept
+
+    rxreq
+    expect req.url == "/hp-feed/zett"
+    expect req.http.Cookie == <undef>
+    txresp -hdr "X-Backend: haproxy-2" -hdr "x-maxage: 1"
+    accept
+
+} -start
+
+@ call varnish(['haproxy'])
+    include "/etc/varnish/vcl_includes/test.vcl";
+@ endcall
+
+
+# First request is served from backend directly, because there cannot be a hit.
+client c1 {
+    txreq -url "/hp-feed/zett" \
+          -hdr "Host: app-cache.zeit.de"
+    rxresp
+    expect resp.status == 200
+    expect resp.http.x-backend == "haproxy-1"
+    expect resp.http.x-beresp-ttl == "1.000"
+    expect resp.http.x-beresp-grace == "3600.000"
+}-run
+
+delay 2
+
+# The second request is served stale while cache is being revalidated.
+client c2 {
+    txreq -url "/hp-feed/zett" \
+          -hdr "Host: app-cache.zeit.de"
+    rxresp
+    expect resp.status == 200
+    expect resp.http.x-backend == "haproxy-1"
+} -run
+
+# The third request is still served stale, because the previous revalidation
+# failed. Revalidation is triggered again.
+client c3 {
+    txreq -url "/hp-feed/zett" \
+          -hdr "Host: app-cache.zeit.de"
+    rxresp
+    expect resp.status == 200
+    expect resp.http.x-backend == "haproxy-1"
+} -run
+
+# The fourth request is a HIT with a positive TTL, because revalidation finally succeeded.
+client c4 {
+    txreq -url "/hp-feed/zett" \
+          -hdr "Host: app-cache.zeit.de"
+    rxresp
+    expect resp.status == 200
+    expect resp.http.x-backend == "haproxy-2"
+} -run
