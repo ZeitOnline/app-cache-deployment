@@ -1,5 +1,7 @@
 sub vcl_hit {
     set req.http.X-ZON-Cache = "HIT";
+    set req.http.X-ZON-TTL = obj.ttl;
+    set req.http.X-ZON-Grace = obj.grace;
 }
 
 sub vcl_miss {
