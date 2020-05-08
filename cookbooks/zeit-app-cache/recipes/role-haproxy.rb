@@ -10,4 +10,5 @@ node.default["batou"]["haproxy_config"] = "/srv/app-cache/deployment/work/haprox
 
 include_recipe "zeit-batou-target"
 include_recipe "zeit-batou-target::haproxy"
+node.default["prometheus_exporters"]["haproxy"]["scrape_uri"] = "unix:/var/run/haproxy.sock"
 include_recipe "zeit-haproxy::monitoring"
