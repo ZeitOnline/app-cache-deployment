@@ -1,9 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Automates branch merging and tagging that goes along with a
 # master/staging/production batou deployment repository.
 # Takes all its inspiration (and quite a bit of code) from zest.releaser.
-import ConfigParser
 import argparse
 import os
 import subprocess
@@ -48,7 +47,7 @@ def update_source_branch(options):
     if cmd('git rev-parse --abbrev-ref HEAD') != options.source:
         if ask('OK to update branch "%s"' % options.source):
             cmd('git checkout %s' % options.source)
-            print cmd('git pull')
+            print(cmd('git pull'))
     if ('Your branch is ahead of' in cmd('LANG=C git status') and
             ask('OK to push commits to the server?')):
         print(cmd('git push'))
@@ -127,8 +126,7 @@ def cmd(cmd, acceptable_returncodes=[0]):
 
 
 def get_input(question):
-    # XXX This simply assumes utf8 -- is that feasible?
-    return raw_input(question).decode('utf-8').strip()
+    return input(question).strip()
 
 
 def ask(question, default=True):
