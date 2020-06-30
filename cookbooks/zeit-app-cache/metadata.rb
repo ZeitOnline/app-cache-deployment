@@ -1,5 +1,5 @@
 name             'zeit-app-cache'
-version          '1.9.1'
+version          '1.9.2'
 
 maintainer       'ZEIT ONLINE GmbH'
 maintainer_email 'zon-backend@zeit.de'
@@ -12,7 +12,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 chef_version     '>= 14'
 supports         'ubuntu', '>= 18.04'
 
-depends 'zeit-batou-target', '=1.7.1'
+depends 'zeit-batou-target', '=1.8.0'
 depends 'zeit-haproxy', '=2.3.0'
 depends "zeit-letsencrypt-acme.sh"  # pinned in env
 depends 'memcached', '=5.1.1'
