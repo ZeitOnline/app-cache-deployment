@@ -1,3 +1,4 @@
+from batou import UpdateNeeded
 from batou.component import Component
 from batou.lib.file import Directory, File
 from glob import glob
@@ -14,15 +15,20 @@ BACKENDS = {
 
 class Docker(Component):
 
+    image = 'varnish_test_app_cache'
+
     def configure(self):
         self += File("Dockerfile")
         self += File(".dockerignore")
 
     def verify(self):
         self.parent.assert_no_subcomponent_changes()
+        out, _ = self.cmd('docker image ls %s' % self.image)
+        if self.image not in out:
+            raise UpdateNeeded()
 
     def update(self):
-        self.cmd("docker build -t varnish_test_app_cache .")
+        self.cmd("docker build -t %s ." % self.image)
 
 
 class Varnishtest(Component):
