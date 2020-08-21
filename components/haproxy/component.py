@@ -26,6 +26,7 @@ class HAProxy(Component):
         "194.77.156.0/23",  # ZON HH public
         "217.13.68.0/23",   # Gaertner
         "192.168.0.0/16",   # Docker
+        "10.156.0.0/20",    # Data Team GCP
     ]
 
     # We hard-code this here, but it comes from zeit-letsencrypt-acme.sh recipe
