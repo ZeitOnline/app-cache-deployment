@@ -15,6 +15,10 @@ class Varnish(Component):
         self += Directory('vcl_includes')
 
         self += File(
+            "vcl_includes/acl.vcl",
+            source="vcl_includes/acl.vcl",
+            is_template="true")
+        self += File(
             "vcl_includes/backends.vcl",
             source="vcl_includes/backends.vcl",
             is_template="true")

@@ -1,8 +1,11 @@
-import jinja2
+from batou import UpdateNeeded
+from batou.component import Component
+from batou.lib.file import Directory, File
+from glob import glob
 import batou
+import batou.lib.file
+import jinja2
 import os
-from batou.component import Component, Attribute
-from batou.lib.file import SyncDirectory, Directory, File
 
 
 BACKENDS = {
@@ -12,15 +15,20 @@ BACKENDS = {
 
 class Docker(Component):
 
+    image = 'varnish_test_app_cache'
+
     def configure(self):
         self += File("Dockerfile")
         self += File(".dockerignore")
 
     def verify(self):
         self.parent.assert_no_subcomponent_changes()
+        out, _ = self.cmd('docker image ls %s' % self.image)
+        if self.image not in out:
+            raise UpdateNeeded()
 
     def update(self):
-        self.cmd("docker build -t varnish_test_app_cache .")
+        self.cmd("docker build -t %s ." % self.image)
 
 
 class Varnishtest(Component):
@@ -55,6 +63,11 @@ class Varnishtest(Component):
                 tpl = env.get_template('preprocess.vtc')
                 tpl = tpl.render(vtc=path)
                 self += File(path, content=tpl)
+        # Remove deleted/renamed files.
+        for vtc in glob(self.workdir + '/tests/*.vtc'):
+            if not os.path.isfile(
+                    self.defdir + '/tests/' + os.path.basename(vtc)):
+                self += DeleteFile(vtc)
 
 
 class DummyVarnishtest(Component):
@@ -62,3 +75,19 @@ class DummyVarnishtest(Component):
         where testing isn't needed."""
     def configure(self):
         self.vcldir = self.require_one('varnish_dir', self.host)
+
+
+class DeleteFile(Component):
+    """XXX batou.lib.File really should support `ensure=absent`."""
+
+    namevar = 'path'
+
+    def configure(self):
+        self.path = self.map(self.path)
+
+    def verify(self):
+        if os.path.isfile(self.path):
+            raise batou.UpdateNeeded()
+
+    def update(self):
+        batou.lib.file.ensure_path_nonexistent(self.path)

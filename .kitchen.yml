@@ -28,9 +28,10 @@ platforms:
 
 verifier:
   name: inspec
+  reporter:
+    - cli
   <% if ENV["KITCHEN_FORMAT"] == "junit" %>
-  format: junit
-  output: report_integration_%{suite}.xml
+    - junit:report_integration_%{suite}.xml
   <% end %>
 
 suites:
