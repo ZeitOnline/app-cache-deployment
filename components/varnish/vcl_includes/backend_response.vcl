@@ -13,6 +13,7 @@ sub vcl_backend_response {
     if (bereq.http.x-ignore-cache-control == "true") {
         unset beresp.http.Cache-Control;
         unset beresp.http.expires;
+        unset beresp.http.set-cookie;
     }
 
     set beresp.grace = 1h;

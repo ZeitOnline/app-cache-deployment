@@ -1,5 +1,5 @@
 name             'zeit-app-cache'
-version          '1.9.2'
+version          '1.10.0'
 
 maintainer       'ZEIT ONLINE GmbH'
 maintainer_email 'zon-backend@zeit.de'
@@ -21,3 +21,5 @@ depends 'memcached', '=5.1.1'
     depends 'yum-epel'  # already pinned by baseserver
 depends 'zeit-zabbix'  # already pinned by baseserver
 depends 'prometheus_exporters', '>=0.15.102'
+
+depends 'zeit-fluentbit'  # pinned in env

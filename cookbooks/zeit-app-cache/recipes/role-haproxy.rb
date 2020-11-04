@@ -3,6 +3,7 @@ node.default["acme.sh"]["run_as_user"] = "haproxy"
 node.default["acme.sh"]["ddns-key-id"] = "app-cache"
 if node.chef_environment != "_default"  # kitchen
   include_recipe "zeit-letsencrypt-acme.sh"
+  include_recipe "zeit-app-cache::fluentbit"
 end
 
 node.default["batou"]["serviceUsers"] = ["app-cache"]
