@@ -20,7 +20,7 @@ control "wirtschaftswoche feed is proxied correctly" do
   describe http("http://localhost/wirtschaftswoche-hp-feed",
                 enable_remote_worker: true) do
     its("status") { should eq 200}
-    its("body") { should include "<link>http://www.wiwo.de</link>" }
+    its("body") { should include "<link>https://www.wiwo.de</link>" }
   end
 end
 
