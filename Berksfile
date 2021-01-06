@@ -10,3 +10,5 @@ end
 
 local_cookbook "zeit-app-cache"
 cookbook "zeit-baseserver"  # only for the version pins
+
+solver :ruby, :required

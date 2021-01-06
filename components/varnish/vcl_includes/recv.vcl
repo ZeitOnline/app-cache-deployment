@@ -35,6 +35,12 @@ sub vcl_recv {
         set req.http.x-long-term-grace = "true";
     }
 
+    if (req.url == "/wirtschaftswoche-hp-feed") {
+        set req.url = "/hp-feed/wirtschaftswoche";
+        set req.http.x-ignore-cache-control = "true";
+        set req.http.x-long-term-grace = "true";
+    }
+
     if (req.url == "/zett-hp-feed") {
         set req.url = "/hp-feed/zett";
         set req.http.x-ignore-cache-control = "true";
