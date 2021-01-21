@@ -1,5 +1,5 @@
 apipkg==1.5
-batou==2.2.2
+batou==2.2.3
 certifi==2020.12.5
 chardet==4.0.0
 ConfigUpdater==1.1.3
