@@ -6,6 +6,7 @@ import re
 class HAProxy(Component):
 
     subdomain = '.dev'
+    svc_subdomain = 'testing'
 
     memcache_settings = [
         'inter 5s fastinter 1s rise 2 fall 3',
